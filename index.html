@@ -7,92 +7,144 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #000;
+      color: #e0f2fe;
+      overflow-x: hidden;
+    }
+    .glow-text {
+      background: linear-gradient(90deg, #00d4ff, #0066ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .card {
+      background: rgba(10, 15, 30, 0.7);
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      border-color: #00d4ff;
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.25);
+      transform: translateY(-8px);
+    }
+    .btn-glow {
+      background: linear-gradient(90deg, #0066ff, #00d4ff);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+      transition: all 0.4s ease;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.7);
+      transform: scale(1.05);
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .logo-img {
+      max-width: 180px;
+      margin: 0 auto 1.5rem;
+      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+    }
   </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+<body class="relative">
 
-  <!-- Hero -->
-  <header class="py-24 px-6 text-center border-b border-gray-800">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-        🚀 Zynx Corporation
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Hero with Logo -->
+  <header class="relative py-32 px-6 text-center overflow-hidden">
+    <div class="max-w-5xl mx-auto relative z-10">
+      <img src="https://files.catbox.moe/0q0z0z.png" alt="Zynx Corporation Logo" class="logo-img">
+      <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-8 glow-text">
+        Zynx Corporation
       </h1>
-      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10">
+      <p class="text-2xl md:text-3xl text-cyan-300 font-light max-w-4xl mx-auto mb-10">
         Umbrella company building AI-powered platforms and next-generation digital infrastructure.
       </p>
-      <p class="text-lg text-blue-400 font-medium">
-        Currently under development • Serious builders & early adopters only
+      <p class="text-xl text-blue-300 font-medium mb-12">
+        Currently under development • Early access for serious builders only
       </p>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="flex-grow py-16 px-6">
-    <div class="max-w-4xl mx-auto space-y-20">
+  <main class="relative py-20 px-6">
+    <div class="max-w-6xl mx-auto space-y-24">
 
       <!-- Mission -->
       <section class="text-center">
-        <h2 class="text-3xl md:text-4xl font-semibold mb-6">What We Build</h2>
-        <p class="text-lg text-gray-400 leading-relaxed max-w-3xl mx-auto">
-          Zynx Corporation creates specialized AI companies that solve real-world problems — from everyday errands and education to global trade and beyond. Each platform is designed to empower people, create economic opportunity, and scale intelligently.
+        <h2 class="text-4xl md:text-5xl font-bold glow-text mb-10">
+          Forging the Future
+        </h2>
+        <p class="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+          Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.
         </p>
       </section>
 
-      <!-- Sub-companies -->
+      <!-- Sub-companies Grid -->
       <section>
-        <h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">Our AI Platforms</h2>
+        <h2 class="text-4xl md:text-5xl font-bold text-center glow-text mb-16">
+          Our AI Platforms
+        </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <!-- ErrandAI -->
-          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
-            <h3 class="text-2xl font-bold mb-3">ErrandAI</h3>
-            <p class="text-gray-400 mb-6">
+          <div class="card rounded-3xl p-8">
+            <h3 class="text-3xl font-bold mb-4 text-cyan-300">ErrandAI</h3>
+            <p class="text-gray-300 mb-6">
               AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.
             </p>
-            <p class="text-sm text-green-400 mb-4">Live (Alpha)</p>
-            <a href="https://errandai.app/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+            <p class="text-lg text-green-400 mb-6 font-medium">Live (Alpha)</p>
+            <a href="https://errandai.app/" target="_blank" class="btn-glow text-white px-8 py-4 rounded-xl font-semibold text-lg inline-block">
               Visit ErrandAI →
             </a>
-            <p class="text-xs text-gray-500 mt-4">
-              Join waitlist or download now
-            </p>
+            <p class="text-sm text-gray-500 mt-4">Join waitlist or download now</p>
           </div>
 
           <!-- AlphaTrade Global -->
-          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
-            <h3 class="text-2xl font-bold mb-3">AlphaTrade Global</h3>
-            <p class="text-gray-400 mb-6">
-              AI-assisted global trading and investment platform built for accessibility and smart execution.
+          <div class="card rounded-3xl p-8">
+            <h3 class="text-3xl font-bold mb-4 text-cyan-300">AlphaTrade Global</h3>
+            <p class="text-gray-300 mb-6">
+              AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.
             </p>
-            <p class="text-sm text-green-400 mb-4">Live</p>
-            <a href="https://alphatradeglobal.live/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+            <p class="text-lg text-green-400 mb-6 font-medium">Live</p>
+            <a href="https://alphatradeglobal.live/" target="_blank" class="btn-glow text-white px-8 py-4 rounded-xl font-semibold text-lg inline-block">
               Visit AlphaTrade Global →
             </a>
           </div>
 
           <!-- World Forge -->
-          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
-            <h3 class="text-2xl font-bold mb-3">World Forge</h3>
-            <p class="text-gray-400 mb-6">
-              Global AI infrastructure layer connecting emerging markets with next-generation digital tools and services.
+          <div class="card rounded-3xl p-8">
+            <h3 class="text-3xl font-bold mb-4 text-cyan-300">World Forge</h3>
+            <p class="text-gray-300 mb-6">
+              Global AI infrastructure layer connecting emerging markets with next-generation digital tools and scalable services.
             </p>
-            <p class="text-sm text-yellow-400 mb-4">Under Development</p>
-            <button disabled class="bg-gray-700 text-gray-500 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
+            <p class="text-sm text-yellow-400 mb-6 font-medium">Under Development</p>
+            <button disabled class="bg-gray-800 text-gray-500 px-8 py-4 rounded-xl font-semibold text-lg cursor-not-allowed">
               Coming Soon
             </button>
           </div>
 
           <!-- Nexara Forge -->
-          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
-            <h3 class="text-2xl font-bold mb-3">Nexara Forge</h3>
-            <p class="text-gray-400 mb-6">
-              Advanced AI research & development lab creating next-gen models and automation infrastructure.
+          <div class="card rounded-3xl p-8">
+            <h3 class="text-3xl font-bold mb-4 text-cyan-300">Nexara Forge</h3>
+            <p class="text-gray-300 mb-6">
+              Advanced AI research & development lab creating next-gen models, automation, and intelligent infrastructure.
             </p>
-            <p class="text-sm text-yellow-400 mb-4">Under Development</p>
-            <button disabled class="bg-gray-700 text-gray-500 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
+            <p class="text-sm text-yellow-400 mb-6 font-medium">Under Development</p>
+            <button disabled class="bg-gray-800 text-gray-500 px-8 py-4 rounded-xl font-semibold text-lg cursor-not-allowed">
               Coming Soon
             </button>
           </div>
@@ -101,27 +153,55 @@
       </section>
 
       <!-- Waitlist / CTA -->
-      <section class="text-center py-12 border-t border-gray-800">
-        <h2 class="text-3xl md:text-4xl font-semibold mb-6">Early Access & Waitlist</h2>
-        <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+      <section class="text-center py-20 border-t border-gray-800">
+        <h2 class="text-4xl md:text-5xl font-bold glow-text mb-8">
+          Early Access Awaits
+        </h2>
+        <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
           Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.
         </p>
-        <a href="https://errandai.app/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-10 py-5 rounded-xl transition mb-4">
+        <a href="https://errandai.app/" target="_blank" class="btn-glow text-white text-xl font-bold px-12 py-6 rounded-2xl inline-block">
           Join ErrandAI Waitlist →
         </a>
-        <p class="text-sm text-gray-500">
-          No spam • Serious builders & early users only
+        <p class="text-base text-gray-500 mt-6">
+          No spam • Serious early adopters & builders only
         </p>
       </section>
 
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+  <!-- Footer with IG -->
+  <footer class="bg-black border-t border-gray-800 py-10 text-center text-gray-500 text-sm">
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
-    <p class="mt-2">Building AI infrastructure for the future of work and opportunity.</p>
+    <p class="mt-2">Forging the future of AI-driven opportunity.</p>
+    <div class="mt-4">
+      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition">
+        Follow us on Instagram @zynx.corporation
+      </a>
+    </div>
   </footer>
+
+  <!-- Particles.js Config -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#00d4ff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#0066ff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+        "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+      },
+      "retina_detect": true
+    });
+  </script>
 
 </body>
 </html>
