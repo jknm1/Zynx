@@ -6,182 +6,149 @@
   <title>Zynx Corporation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background:#000;
-      color:#e0f2fe;
-      font-family:'Inter',sans-serif;
+      background:#ffffff;
+      color:#1e293b;
+      font-family:'Inter',system-ui,sans-serif;
+      line-height:1.6;
       min-height:100vh;
-      overflow-x:hidden;
-      position:relative;
-    }
-    #particles-js {
-      position:fixed;
-      width:100%;
-      height:100%;
-      top:0; left:0;
-      z-index:1;
     }
     .container {
-      position:relative;
-      z-index:10;
       max-width:1200px;
       margin:0 auto;
       padding:0 2rem;
     }
     header {
-      padding:12rem 0 8rem;
+      padding:8rem 0 4rem;
       text-align:center;
+      border-bottom:1px solid #e2e8f0;
     }
     h1 {
-      font-family:'Orbitron',sans-serif;
-      font-size:5.5rem;
+      font-size:4.5rem;
       font-weight:700;
-      background:linear-gradient(90deg,#00f0ff,#0077ff,#00f0ff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      background-size:200% 100%;
-      animation:gradientFlow 8s ease infinite;
-      letter-spacing:-0.05em;
-      line-height:1.05;
+      color:#1e40af;
       margin-bottom:1.5rem;
     }
     .subtitle {
-      font-size:1.75rem;
-      color:#94a3b8;
+      font-size:1.5rem;
+      color:#475569;
       max-width:800px;
-      margin:0 auto 2.5rem;
-      font-weight:300;
+      margin:0 auto 2rem;
     }
     .status {
       font-size:1.25rem;
-      color:#38bdf8;
+      color:#3b82f6;
       font-weight:500;
     }
+    main {
+      padding:6rem 0;
+    }
     .section-title {
-      font-family:'Orbitron',sans-serif;
-      font-size:3.5rem;
+      font-size:3rem;
+      font-weight:700;
       text-align:center;
-      margin:6rem 0 4rem;
-      color:#60a5fa;
+      margin-bottom:3rem;
+      color:#1e293b;
     }
     .grid {
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
       gap:2rem;
-      margin-bottom:6rem;
     }
     .card {
-      background:rgba(15,23,42,0.65);
-      border:1px solid rgba(0,212,255,0.2);
-      border-radius:1.25rem;
-      padding:2.5rem;
-      backdrop-filter:blur(16px);
-      transition:all 0.5s ease;
-      position:relative;
-      overflow:hidden;
+      background:#ffffff;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:2rem;
+      box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+      transition:all 0.3s ease;
     }
-    .card::before {
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg,rgba(0,212,255,0.08),transparent);
-      opacity:0;
-      transition:opacity 0.5s;
-    }
-    .card:hover::before { opacity:1; }
     .card:hover {
-      border-color:#00d4ff;
-      box-shadow:0 0 60px rgba(0,212,255,0.3);
-      transform:translateY(-12px);
+      box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);
+      border-color:#3b82f6;
     }
     .card h3 {
-      font-size:2rem;
+      font-size:1.875rem;
       margin-bottom:1rem;
-      color:#93c5fd;
+      color:#1d4ed8;
     }
     .card p {
-      color:#cbd5e1;
+      color:#475569;
       margin-bottom:1.5rem;
     }
     .badge-live {
-      background:rgba(52,211,153,0.15);
-      color:#34d399;
-      padding:0.5rem 1.25rem;
+      background:#ecfdf5;
+      color:#065f46;
+      padding:0.375rem 1rem;
       border-radius:9999px;
       font-weight:600;
       display:inline-block;
-      margin-bottom:1.5rem;
+      margin-bottom:1rem;
     }
     .badge-dev {
-      background:rgba(251,191,36,0.15);
-      color:#fbbf24;
-      padding:0.5rem 1.25rem;
+      background:#fffbeb;
+      color:#92400e;
+      padding:0.375rem 1rem;
       border-radius:9999px;
       font-weight:600;
       display:inline-block;
-      margin-bottom:1.5rem;
+      margin-bottom:1rem;
     }
     .btn {
-      background:linear-gradient(90deg,#0066ff,#00d4ff);
-      background-size:200% 100%;
+      background:#1d4ed8;
       color:white;
-      padding:1rem 2.5rem;
+      padding:1rem 2rem;
       border:none;
-      border-radius:9999px;
+      border-radius:0.75rem;
       font-weight:600;
       font-size:1.125rem;
       cursor:pointer;
-      transition:all 0.5s ease;
-      box-shadow:0 0 30px rgba(0,212,255,0.4);
-      animation:buttonFlow 6s ease infinite;
+      transition:all 0.3s ease;
+      display:inline-block;
     }
     .btn:hover {
-      box-shadow:0 0 60px rgba(0,212,255,0.7);
-      transform:scale(1.08);
+      background:#1e40af;
+      transform:translateY(-2px);
     }
     .btn-disabled {
-      background:#1e293b;
-      color:#64748b;
+      background:#9ca3af;
+      color:white;
       cursor:not-allowed;
-      box-shadow:none;
-      animation:none;
     }
     .cta {
       text-align:center;
-      padding:8rem 2rem 6rem;
-      border-top:1px solid rgba(0,212,255,0.15);
+      padding:6rem 2rem;
+      border-top:1px solid #e2e8f0;
     }
     .cta h2 {
-      font-size:3.5rem;
-      margin-bottom:2rem;
-      color:#60a5fa;
+      font-size:3rem;
+      margin-bottom:1.5rem;
     }
     footer {
       padding:3rem 2rem;
       text-align:center;
+      border-top:1px solid #e2e8f0;
       color:#64748b;
-      border-top:1px solid rgba(0,212,255,0.15);
     }
     footer a {
-      color:#60a5fa;
+      color:#1d4ed8;
       text-decoration:none;
       transition:color 0.3s;
     }
-    footer a:hover { color:#00d4ff; }
-    @keyframes buttonFlow {
-      0%,100% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
+    footer a:hover {
+      color:#1e40af;
+    }
+    @media (max-width:768px) {
+      h1 { font-size:3rem; }
+      h2 { font-size:2.25rem; }
+      header { padding:6rem 1rem 4rem; }
     }
   </style>
 </head>
 <body>
-
-  <div id="particles-js"></div>
 
   <header>
     <div class="container">
@@ -193,7 +160,7 @@
 
   <main class="container">
     <h2 class="section-title">Our Mission</h2>
-    <p style="font-size:1.25rem; text-align:center; max-width:800px; margin:0 auto 4rem; color:#cbd5e1;">
+    <p style="font-size:1.25rem; text-align:center; max-width:800px; margin:0 auto 4rem; color:#475569;">
       Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.
     </p>
 
@@ -205,7 +172,7 @@
         <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
         <span class="badge-live">Live (Alpha)</span>
         <a href="https://errandai.app/" target="_blank" class="btn">Visit ErrandAI →</a>
-        <p style="margin-top:1rem; font-size:0.95rem; color:#94a3b8;">Join waitlist or download now</p>
+        <p style="margin-top:1rem; font-size:0.95rem; color:#64748b;">Join waitlist or download now</p>
       </div>
 
       <div class="card">
@@ -234,7 +201,7 @@
 
   <div class="cta">
     <h2>Early Access Awaits</h2>
-    <p style="font-size:1.25rem; margin-bottom:2.5rem; max-width:700px; margin-left:auto; margin-right:auto; color:#cbd5e1;">
+    <p style="font-size:1.25rem; margin-bottom:2rem; max-width:700px; margin-left:auto; margin-right:auto; color:#475569;">
       Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.
     </p>
     <a href="https://errandai.app/" target="_blank" class="btn" style="font-size:1.25rem; padding:1.25rem 3rem;">
@@ -250,29 +217,9 @@
     <p style="margin-top:0.75rem;">
       Forging the future of AI-driven opportunity.
       <br>
-      <a href="https://www.instagram.com/zynx.corporation" target="_blank">Follow us on Instagram @zynx.corporation</a>
+      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank">Follow us on Instagram @zynx.corporation</a>
     </p>
   </footer>
-
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00d4ff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.45, "random": true },
-        "size": { "value": 2.5, "random": true },
-        "line_linked": { "enable": true, "distance": 140, "color": "#0066ff", "opacity": 0.35, "width": 1 },
-        "move": { "enable": true, "speed": 1.8, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-        "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } }, "push": { "particles_nb": 4 } }
-      },
-      "retina_detect": true
-    });
-  </script>
 
 </body>
 </html>
