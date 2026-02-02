@@ -176,14 +176,6 @@ footer a:hover {
   color: #1e40af;
 }
 
-.logo {
-  max-width: 180px;
-  margin-bottom: 2rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Fade-in animation on scroll */
 .fade-in {
   opacity: 0;
