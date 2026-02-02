@@ -6,152 +6,14 @@
   <title>Zynx Corporation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background:#ffffff;
-      color:#1e293b;
-      font-family:'Inter',system-ui,sans-serif;
-      line-height:1.6;
-      min-height:100vh;
-    }
-    .container {
-      max-width:1200px;
-      margin:0 auto;
-      padding:0 2rem;
-    }
-    header {
-      padding:8rem 0 4rem;
-      text-align:center;
-      border-bottom:1px solid #e2e8f0;
-    }
-    h1 {
-      font-size:4.5rem;
-      font-weight:700;
-      color:#1e40af;
-      margin-bottom:1.5rem;
-    }
-    .subtitle {
-      font-size:1.5rem;
-      color:#475569;
-      max-width:800px;
-      margin:0 auto 2rem;
-    }
-    .status {
-      font-size:1.25rem;
-      color:#3b82f6;
-      font-weight:500;
-    }
-    main {
-      padding:6rem 0;
-    }
-    .section-title {
-      font-size:3rem;
-      font-weight:700;
-      text-align:center;
-      margin-bottom:3rem;
-      color:#1e293b;
-    }
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-      gap:2rem;
-    }
-    .card {
-      background:#ffffff;
-      border:1px solid #e2e8f0;
-      border-radius:1rem;
-      padding:2rem;
-      box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
-      transition:all 0.3s ease;
-    }
-    .card:hover {
-      box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);
-      border-color:#3b82f6;
-    }
-    .card h3 {
-      font-size:1.875rem;
-      margin-bottom:1rem;
-      color:#1d4ed8;
-    }
-    .card p {
-      color:#475569;
-      margin-bottom:1.5rem;
-    }
-    .badge-live {
-      background:#ecfdf5;
-      color:#065f46;
-      padding:0.375rem 1rem;
-      border-radius:9999px;
-      font-weight:600;
-      display:inline-block;
-      margin-bottom:1rem;
-    }
-    .badge-dev {
-      background:#fffbeb;
-      color:#92400e;
-      padding:0.375rem 1rem;
-      border-radius:9999px;
-      font-weight:600;
-      display:inline-block;
-      margin-bottom:1rem;
-    }
-    .btn {
-      background:#1d4ed8;
-      color:white;
-      padding:1rem 2rem;
-      border:none;
-      border-radius:0.75rem;
-      font-weight:600;
-      font-size:1.125rem;
-      cursor:pointer;
-      transition:all 0.3s ease;
-      display:inline-block;
-    }
-    .btn:hover {
-      background:#1e40af;
-      transform:translateY(-2px);
-    }
-    .btn-disabled {
-      background:#9ca3af;
-      color:white;
-      cursor:not-allowed;
-    }
-    .cta {
-      text-align:center;
-      padding:6rem 2rem;
-      border-top:1px solid #e2e8f0;
-    }
-    .cta h2 {
-      font-size:3rem;
-      margin-bottom:1.5rem;
-    }
-    footer {
-      padding:3rem 2rem;
-      text-align:center;
-      border-top:1px solid #e2e8f0;
-      color:#64748b;
-    }
-    footer a {
-      color:#1d4ed8;
-      text-decoration:none;
-      transition:color 0.3s;
-    }
-    footer a:hover {
-      color:#1e40af;
-    }
-    @media (max-width:768px) {
-      h1 { font-size:3rem; }
-      h2 { font-size:2.25rem; }
-      header { padding:6rem 1rem 4rem; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
     <div class="container">
+      <img src="https://files.catbox.moe/0q0z0z.png" alt="Zynx Corporation Logo" class="logo">
       <h1>Zynx Corporation</h1>
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
       <p class="status">Currently under development • Early access for serious builders only</p>
@@ -159,67 +21,63 @@
   </header>
 
   <main class="container">
-    <h2 class="section-title">Our Mission</h2>
-    <p style="font-size:1.25rem; text-align:center; max-width:800px; margin:0 auto 4rem; color:#475569;">
-      Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.
-    </p>
+    <section class="mission fade-in">
+      <h2>Our Mission</h2>
+      <p>Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.</p>
+    </section>
 
-    <h2 class="section-title">Our AI Platforms</h2>
-    <div class="grid">
+    <section class="platforms fade-in">
+      <h2>Our AI Platforms</h2>
+      <div class="grid">
 
-      <div class="card">
-        <h3>ErrandAI</h3>
-        <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
-        <span class="badge-live">Live (Alpha)</span>
-        <a href="https://errandai.app/" target="_blank" class="btn">Visit ErrandAI →</a>
-        <p style="margin-top:1rem; font-size:0.95rem; color:#64748b;">Join waitlist or download now</p>
+        <div class="card fade-in">
+          <h3>ErrandAI</h3>
+          <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
+          <span class="badge-live">Live (Alpha)</span>
+          <a href="https://errandai.app/" target="_blank" class="btn">Visit ErrandAI →</a>
+          <p>Join waitlist or download now</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>AlphaTrade Global</h3>
+          <p>AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.</p>
+          <span class="badge-live">Live</span>
+          <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade Global →</a>
+        </div>
+
+        <div class="card fade-in">
+          <h3>World Forge</h3>
+          <p>Global AI infrastructure layer connecting emerging markets with next-generation digital tools and scalable services.</p>
+          <span class="badge-dev">Under Development</span>
+          <button class="btn btn-disabled">Coming Soon</button>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Nexara Forge</h3>
+          <p>Advanced AI research & development lab creating next-gen models, automation, and intelligent infrastructure.</p>
+          <span class="badge-dev">Under Development</span>
+          <button class="btn btn-disabled">Coming Soon</button>
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <h3>AlphaTrade Global</h3>
-        <p>AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.</p>
-        <span class="badge-live">Live</span>
-        <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade Global →</a>
-      </div>
-
-      <div class="card">
-        <h3>World Forge</h3>
-        <p>Global AI infrastructure layer connecting emerging markets with next-generation digital tools and scalable services.</p>
-        <span class="badge-dev">Under Development</span>
-        <button class="btn btn-disabled">Coming Soon</button>
-      </div>
-
-      <div class="card">
-        <h3>Nexara Forge</h3>
-        <p>Advanced AI research & development lab creating next-gen models, automation, and intelligent infrastructure.</p>
-        <span class="badge-dev">Under Development</span>
-        <button class="btn btn-disabled">Coming Soon</button>
-      </div>
-
-    </div>
+    <section class="cta fade-in">
+      <h2>Early Access Awaits</h2>
+      <p>Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.</p>
+      <a href="https://errandai.app/" target="_blank" class="btn large">Join ErrandAI Waitlist →</a>
+      <p>No spam • Serious early adopters & builders only</p>
+    </section>
   </main>
-
-  <div class="cta">
-    <h2>Early Access Awaits</h2>
-    <p style="font-size:1.25rem; margin-bottom:2rem; max-width:700px; margin-left:auto; margin-right:auto; color:#475569;">
-      Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.
-    </p>
-    <a href="https://errandai.app/" target="_blank" class="btn" style="font-size:1.25rem; padding:1.25rem 3rem;">
-      Join ErrandAI Waitlist →
-    </a>
-    <p style="margin-top:1.5rem; font-size:1rem; color:#64748b;">
-      No spam • Serious early adopters & builders only
-    </p>
-  </div>
 
   <footer>
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
-    <p style="margin-top:0.75rem;">
-      Forging the future of AI-driven opportunity.
-      <br>
-      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank">Follow us on Instagram @zynx.corporation</a>
-    </p>
+    <p>Forging the future of AI-driven opportunity.</p>
+    <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank" class="social-link">
+      Follow us on Instagram @zynx.corporation
+    </a>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
