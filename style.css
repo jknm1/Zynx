@@ -1,50 +1,184 @@
+/* Zynx Corporation - style.css */
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-  background: #0e0e0e;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #0a0e17; /* deep dark navy */
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
   min-height: 100vh;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  padding: 24px;
-  text-align: center;
+/* Typography */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  @media (min-width: 768px) {
+    font-size: 5rem;
+  }
+}
+
+h2 {
+  font-size: 2.25rem;
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+/* Header / Hero */
+header {
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid #1e293b;
+}
+
+header h1 {
+  color: #60a5fa; /* bright blue accent */
+  margin-bottom: 1.5rem;
+}
+
+header p {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  max-width: 42rem;
+  margin: 0 auto 1.5rem;
+}
+
+.status {
+  font-size: 1.125rem;
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+/* Main Content */
+main {
+  padding: 4rem 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 5rem;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #e2e8f0;
+}
+
+/* Cards Grid for Sub-companies */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #60a5fa;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #93c5fd;
+}
+
+.card p {
+  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.status-live {
+  color: #34d399;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 1rem;
 }
 
-.tagline {
-  font-size: 14px;
-  color: #aaaaaa;
-  margin-bottom: 24px;
+.status-dev {
+  color: #fbbf24;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.links a {
-  display: block;
-  background: #1a1a1a;
-  color: #ffffff;
-  padding: 16px;
-  border-radius: 12px;
+.btn {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
   text-decoration: none;
-  margin-bottom: 14px;
-  font-size: 16px;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease;
 }
 
-.links a:hover {
-  background: #262626;
+.btn:hover {
+  background: #2563eb;
+}
+
+.btn-disabled {
+  background: #374151;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  border-top: 1px solid #1e293b;
+}
+
+.cta h2 {
+  margin-bottom: 1.5rem;
+}
+
+.cta p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid #1e293b;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+footer p + p {
+  margin-top: 0.5rem;
 }
