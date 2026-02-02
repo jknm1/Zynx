@@ -1,34 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zynx</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zynx Corporation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
 </head>
-<body>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
 
-  <div class="container">
-
-    <img src="logo.png" class="logo" alt="Zynx Logo">
-
-    <h1>Zynx</h1>
-    <p class="subtitle">
-      Umbrella company building smart digital infrastructure.<br>
-      Products powered by AI & real people.<br>
-      <strong>Currently under development.</strong>
-    </p>
-
-    <div class="links">
-      <a href="https://errandai.app" target="_blank">ErrandAI</a>
-      <a href="https://alphatradeglobal.live" target="_blank">Alpha Trade Global</a>
+  <!-- Hero -->
+  <header class="py-24 px-6 text-center border-b border-gray-800">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+        🚀 Zynx Corporation
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10">
+        Umbrella company building AI-powered platforms and next-generation digital infrastructure.
+      </p>
+      <p class="text-lg text-blue-400 font-medium">
+        Currently under development • Serious builders & early adopters only
+      </p>
     </div>
+  </header>
 
-    <footer>
-      © 2026 • Zynx
-    </footer>
+  <!-- Main Content -->
+  <main class="flex-grow py-16 px-6">
+    <div class="max-w-4xl mx-auto space-y-20">
 
-  </div>
+      <!-- Mission -->
+      <section class="text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6">What We Build</h2>
+        <p class="text-lg text-gray-400 leading-relaxed max-w-3xl mx-auto">
+          Zynx Corporation creates specialized AI companies that solve real-world problems — from everyday errands and education to global trade and beyond. Each platform is designed to empower people, create economic opportunity, and scale intelligently.
+        </p>
+      </section>
+
+      <!-- Sub-companies -->
+      <section>
+        <h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">Our AI Platforms</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- ErrandAI -->
+          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
+            <h3 class="text-2xl font-bold mb-3">ErrandAI</h3>
+            <p class="text-gray-400 mb-6">
+              AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.
+            </p>
+            <p class="text-sm text-green-400 mb-4">Live (Alpha)</p>
+            <a href="https://errandai.app/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+              Visit ErrandAI →
+            </a>
+            <p class="text-xs text-gray-500 mt-4">
+              Join waitlist or download now
+            </p>
+          </div>
+
+          <!-- AlphaTrade Global -->
+          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
+            <h3 class="text-2xl font-bold mb-3">AlphaTrade Global</h3>
+            <p class="text-gray-400 mb-6">
+              AI-assisted global trading and investment platform built for accessibility and smart execution.
+            </p>
+            <p class="text-sm text-green-400 mb-4">Live</p>
+            <a href="https://alphatradeglobal.live/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+              Visit AlphaTrade Global →
+            </a>
+          </div>
+
+          <!-- World Forge -->
+          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
+            <h3 class="text-2xl font-bold mb-3">World Forge</h3>
+            <p class="text-gray-400 mb-6">
+              Global AI infrastructure layer connecting emerging markets with next-generation digital tools and services.
+            </p>
+            <p class="text-sm text-yellow-400 mb-4">Under Development</p>
+            <button disabled class="bg-gray-700 text-gray-500 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
+              Coming Soon
+            </button>
+          </div>
+
+          <!-- Nexara Forge -->
+          <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-blue-600/50 transition-all">
+            <h3 class="text-2xl font-bold mb-3">Nexara Forge</h3>
+            <p class="text-gray-400 mb-6">
+              Advanced AI research & development lab creating next-gen models and automation infrastructure.
+            </p>
+            <p class="text-sm text-yellow-400 mb-4">Under Development</p>
+            <button disabled class="bg-gray-700 text-gray-500 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
+              Coming Soon
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Waitlist / CTA -->
+      <section class="text-center py-12 border-t border-gray-800">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6">Early Access & Waitlist</h2>
+        <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+          Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.
+        </p>
+        <a href="https://errandai.app/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-10 py-5 rounded-xl transition mb-4">
+          Join ErrandAI Waitlist →
+        </a>
+        <p class="text-sm text-gray-500">
+          No spam • Serious builders & early users only
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+    <p>© 2026 Zynx Corporation. All rights reserved.</p>
+    <p class="mt-2">Building AI infrastructure for the future of work and opportunity.</p>
+  </footer>
 
 </body>
 </html>
