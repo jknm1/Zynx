@@ -47,10 +47,6 @@ h1 {
   font-weight: 500;
 }
 
-main {
-  padding: 6rem 0;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -336,9 +332,8 @@ footer {
   transform: translateY(0);
 }
 
-/* Waitlist Form & About Section */
-.waitlist-section,
-.about {
+/* Waitlist Form */
+.waitlist-section {
   background: #f8fafc;
   padding: 2.8rem 2rem;
   border-radius: 1.5rem;
@@ -349,52 +344,10 @@ footer {
   text-align: center;
 }
 
-.waitlist-section h2,
-.about h2 {
+.waitlist-section h2 {
   font-size: 2.4rem;
   margin-bottom: 1.2rem;
   color: #1e293b;
-}
-
-.lead {
-  font-size: 1.38rem;
-  line-height: 1.7;
-  font-weight: 500;
-  color: #334155;
-  margin-bottom: 2.2rem;
-}
-
-.values {
-  list-style: none;
-  max-width: 580px;
-  margin: 0 auto 2.8rem;
-  text-align: left;
-  font-size: 1.1rem;
-}
-
-.values li {
-  margin: 1rem 0;
-  padding-left: 1.9rem;
-  position: relative;
-}
-
-.values li::before {
-  content: "✓";
-  color: #1d4ed8;
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
-.about-cta {
-  margin-top: 3rem;
-}
-
-.form-note,
-.small-note {
-  font-size: 0.97rem;
-  color: #64748b;
-  margin-top: 1.4rem;
 }
 
 .waitlist-form {
@@ -418,6 +371,77 @@ footer {
   box-shadow: 0 0 0 3px rgba(29,78,216,0.15);
 }
 
+.form-note {
+  font-size: 0.97rem;
+  color: #64748b;
+  margin-top: 1.4rem;
+}
+
+/* About Section (hidden by default) */
+.about {
+  padding: 8rem 0 6rem;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.about .lead {
+  font-size: 1.38rem;
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.about h3 {
+  font-size: 1.75rem;
+  margin: 3rem 0 1.25rem;
+  color: #1e293b;
+}
+
+.values {
+  list-style: none;
+  max-width: 580px;
+  margin: 0 auto 3rem;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.values li {
+  margin: 1.1rem 0;
+  padding-left: 1.8rem;
+  position: relative;
+}
+
+.values li::before {
+  content: "✓";
+  color: #1d4ed8;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.about-cta {
+  margin-top: 3.5rem;
+}
+
+.small-note {
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  color: #64748b;
+}
+
+/* Hide main content when About is active */
+body.about-visible .main-content,
+body.about-visible header {
+  display: none;
+}
+
+/* Hide sections by default when using view switching */
+.section-hidden {
+  display: none;
+}
+
 /* Remove underlines from all links */
 a {
   text-decoration: none !important;
@@ -438,5 +462,5 @@ a {
   .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-100%) rotate(calc(var(--i) * -90deg)); }
   #nav-toggle:checked ~ .nav-menu .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-90px) rotate(calc(var(--i) * -90deg)); }
   .nav-link { width: 80px; height: 80px; line-height: 80px; font-size: 0.9rem; }
-  .waitlist-section, .about { padding: 2.2rem 1.6rem; margin: 2.5rem 1rem; }
+  .waitlist-section { padding: 2.2rem 1.6rem; margin: 2.5rem 1rem; }
 }
