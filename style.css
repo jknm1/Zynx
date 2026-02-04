@@ -159,22 +159,39 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.4rem;
 }
 
 .contact-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.8rem;
   font-size: 1.1rem;
   color: #1d4ed8;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .contact-item:hover {
   color: #1e40af;
-  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+.email-link::before {
+  content: "✉️";
+  font-size: 1.4rem;
+}
+
+/* Instagram logo styling */
+.ig-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.ig-link:hover .ig-logo {
+  transform: scale(1.15);
 }
 
 /* Small circular logo */
