@@ -1,6 +1,5 @@
-/* style.css - Zynx Corporation (capitalreach.ai twin style) */
+/* style.css - Zynx Corporation */
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -50,14 +49,6 @@ h1 {
 
 main {
   padding: 6rem 0;
-}
-
-.section-title {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #1e293b;
-  font-weight: 700;
 }
 
 .grid {
@@ -167,13 +158,17 @@ footer {
   color: #64748b;
 }
 
-footer a {
-  color: #1d4ed8;
-  text-decoration: none;
-  transition: color 0.3s;
+.footer-links {
+  margin-top: 1.2rem;
 }
 
-footer a:hover {
+.footer-links a {
+  margin: 0 1.25rem;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
   color: #1e40af;
 }
 
@@ -182,7 +177,7 @@ footer a:hover {
   position: fixed;
   top: 1.5rem;
   left: 1.5rem;
-  z-index: 1001; /* Slightly above nav */
+  z-index: 1001;
 }
 
 .small-logo {
@@ -204,7 +199,7 @@ footer a:hover {
 .floating-nav {
   position: fixed;
   top: 1.5rem;
-  left: 90px; /* Adjust this value if it overlaps your logo (e.g. 100px or 120px) */
+  left: 90px;
   z-index: 1000;
 }
 
@@ -215,7 +210,7 @@ footer a:hover {
 .nav-btn {
   width: 60px;
   height: 60px;
-  background: #1d4ed8; /* Your primary blue */
+  background: #1d4ed8;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -255,7 +250,6 @@ footer a:hover {
 .nav-icon::before { top: -9px; }
 .nav-icon::after  { top: 9px; }
 
-/* Hamburger → X toggle */
 #nav-toggle:checked + .nav-btn .nav-icon {
   background: transparent;
 }
@@ -268,7 +262,6 @@ footer a:hover {
   transform: rotate(-45deg);
 }
 
-/* Orbiting menu items */
 .nav-menu {
   position: absolute;
   top: 50%;
@@ -331,7 +324,7 @@ footer a:hover {
   box-shadow: 0 12px 32px rgba(29,78,216,0.5);
 }
 
-/* Fade-in animation on scroll */
+/* Fade-in animation */
 .fade-in {
   opacity: 0;
   transform: translateY(50px);
@@ -343,51 +336,65 @@ footer a:hover {
   transform: translateY(0);
 }
 
-/* Remove underlines from all links */
-a {
-  text-decoration: none !important;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  h1 { font-size: 3.5rem; }
-  h2 { font-size: 2.25rem; }
-  header { padding: 6rem 1rem 4rem; }
-  .small-logo { width: 50px; height: 50px; }
-  .logo-corner { top: 1rem; left: 1rem; }
-  .floating-nav { top: 1rem; left: 70px; } /* Adjust for mobile */
-  .nav-btn { width: 50px; height: 50px; }
-  .nav-icon { width: 22px; }
-  .nav-icon::before, .nav-icon::after { width: 22px; }
-  .nav-menu { width: 220px; height: 220px; margin: -110px 0 0 -110px; }
-  .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-100%) rotate(calc(var(--i) * -90deg)); }
-  #nav-toggle:checked ~ .nav-menu .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-90px) rotate(calc(var(--i) * -90deg)); }
-  .nav-link { width: 80px; height: 80px; line-height: 80px; font-size: 0.9rem; }
-}
-/* ───────────────────────────────────────────────
-   Waitlist Form Styling
-───────────────────────────────────────────────── */
-
-.waitlist-section {
+/* Waitlist Form & About Section */
+.waitlist-section,
+.about {
   background: #f8fafc;
-  padding: 2.5rem 2rem;
+  padding: 2.8rem 2rem;
   border-radius: 1.5rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  margin: 3rem auto;
-  max-width: 620px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+  margin: 3.5rem auto;
+  max-width: 680px;
   text-align: center;
 }
 
-.waitlist-section h2 {
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
+.waitlist-section h2,
+.about h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.2rem;
   color: #1e293b;
 }
 
-.waitlist-section p {
-  margin-bottom: 1.75rem;
-  color: #475569;
+.lead {
+  font-size: 1.38rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 2.2rem;
+}
+
+.values {
+  list-style: none;
+  max-width: 580px;
+  margin: 0 auto 2.8rem;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.values li {
+  margin: 1rem 0;
+  padding-left: 1.9rem;
+  position: relative;
+}
+
+.values li::before {
+  content: "✓";
+  color: #1d4ed8;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.about-cta {
+  margin-top: 3rem;
+}
+
+.form-note,
+.small-note {
+  font-size: 0.97rem;
+  color: #64748b;
+  margin-top: 1.4rem;
 }
 
 .waitlist-form {
@@ -411,34 +418,25 @@ a {
   box-shadow: 0 0 0 3px rgba(29,78,216,0.15);
 }
 
-.form-note {
-  font-size: 0.95rem;
-  color: #64748b;
-  margin-top: 1.25rem;
+/* Remove underlines from all links */
+a {
+  text-decoration: none !important;
 }
 
-/* Footer links spacing */
-.footer-links {
-  margin-top: 1rem;
-}
-
-.footer-links a {
-  margin: 0 1rem;
-  color: #1d4ed8;
-}
-
-.footer-links a:hover {
-  color: #1e40af;
-}
-
-/* Mobile adjustments */
-@media (max-width: 640px) {
-  .waitlist-section {
-    padding: 2rem 1.5rem;
-    margin: 2rem 1rem;
-  }
-
-  .waitlist-section h2 {
-    font-size: 1.9rem;
-  }
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.25rem; }
+  header { padding: 6rem 1rem 4rem; }
+  .small-logo { width: 50px; height: 50px; }
+  .logo-corner { top: 1rem; left: 1rem; }
+  .floating-nav { top: 1rem; left: 70px; }
+  .nav-btn { width: 50px; height: 50px; }
+  .nav-icon { width: 22px; }
+  .nav-icon::before, .nav-icon::after { width: 22px; }
+  .nav-menu { width: 220px; height: 220px; margin: -110px 0 0 -110px; }
+  .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-100%) rotate(calc(var(--i) * -90deg)); }
+  #nav-toggle:checked ~ .nav-menu .nav-item { transform: rotate(calc(var(--i) * 90deg)) translateX(-90px) rotate(calc(var(--i) * -90deg)); }
+  .nav-link { width: 80px; height: 80px; line-height: 80px; font-size: 0.9rem; }
+  .waitlist-section, .about { padding: 2.2rem 1.6rem; margin: 2.5rem 1rem; }
 }
