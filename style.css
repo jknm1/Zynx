@@ -168,7 +168,7 @@ footer {
   color: #1e40af;
 }
 
-/* Small circular logo fixed top-left */
+/* Small circular logo */
 .logo-corner {
   position: fixed;
   top: 1.5rem;
@@ -191,7 +191,7 @@ footer {
   box-shadow: 0 8px 24px rgba(29,78,216,0.3);
 }
 
-/* Floating Circular Navigation Menu */
+/* Floating Circular Navigation */
 .floating-nav {
   position: fixed;
   top: 1.5rem;
@@ -377,7 +377,7 @@ footer {
   margin-top: 1.4rem;
 }
 
-/* About Section (hidden by default) */
+/* About Section */
 .about {
   padding: 8rem 0 6rem;
   background: #f9fafb;
@@ -431,18 +431,18 @@ footer {
   color: #64748b;
 }
 
-/* Hide main content when About is active */
+/* Hide main content when About is visible */
 body.about-visible .main-content,
 body.about-visible header {
   display: none;
 }
 
-/* Hide sections by default when using view switching */
+/* Hide section by default */
 .section-hidden {
   display: none;
 }
 
-/* Remove underlines from all links */
+/* No underlines on links */
 a {
   text-decoration: none !important;
 }
