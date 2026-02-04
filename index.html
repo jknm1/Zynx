@@ -25,7 +25,30 @@
     <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Corporation Logo" class="small-logo">
   </div>
 
-  <header>
+  <!-- Floating Circular Navigation Menu -->
+  <div class="floating-nav">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-btn">
+      <span class="nav-icon"></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li class="nav-item" style="--i:0">
+        <a href="#home" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item" style="--i:1">
+        <a href="#platforms" class="nav-link">Platforms</a>
+      </li>
+      <li class="nav-item" style="--i:2">
+        <a href="#about" class="nav-link">About</a>
+      </li>
+      <li class="nav-item" style="--i:3">
+        <a href="#contact" class="nav-link">Contact</a>
+      </li>
+    </ul>
+  </div>
+
+  <header id="home">
     <div class="container">
       <h1>Zynx Corporation</h1>
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
@@ -39,7 +62,7 @@
       <p>Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.</p>
     </section>
 
-    <section class="platforms fade-in">
+    <section id="platforms" class="platforms fade-in">
       <h2>Our AI Platforms</h2>
       <div class="grid">
 
@@ -83,7 +106,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="contact">
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
     <p>Forging the future of AI-driven opportunity.</p>
     <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank" class="social-link">
