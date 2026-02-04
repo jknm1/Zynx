@@ -1,9 +1,8 @@
 // script.js - Zynx Corporation
+// Features: Fade-in on scroll, smooth scrolling for anchors, close floating nav on click/outside
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("script.js loaded successfully!"); // Debug: confirms file is running
-
-  // 1. Fade-in sections/cards on scroll
+  // 1. Fade-in sections/cards when they enter viewport
   const fadeElements = document.querySelectorAll('.fade-in');
 
   const observer = new IntersectionObserver(
@@ -11,52 +10,38 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Optional: stop observing once visible (better performance)
+          // observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
+      threshold: 0.15,              // Trigger when ~15% is visible
+      rootMargin: "0px 0px -50px 0px" // Slight upward offset for smoother feel
     }
   );
 
+  // Small delay to let page settle
   setTimeout(() => {
     fadeElements.forEach((el) => observer.observe(el));
   }, 300);
 
-  // 2. Handle all anchor links (#home, #about, etc.)
+  // 2. Smooth scrolling for all internal anchor links (#id)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
-      const targetId = this.getAttribute("href").substring(1); // e.g. "about"
-      const targetElement = document.getElementById(targetId);
-
-      console.log("Clicked: #" + targetId); // Debug: see which link was clicked
+      const targetId = this.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
-        if (targetId === "about") {
-          // Show About section
-          targetElement.classList.remove("section-hidden");
-          // Hide main homepage content
-          document.body.classList.add("about-visible");
-          // Scroll to top of About
-          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-          console.log("About section shown");
-        } else {
-          // Hide About if it was open
-          const aboutSection = document.getElementById("about");
-          if (aboutSection) {
-            aboutSection.classList.add("section-hidden");
-            document.body.classList.remove("about-visible");
-          }
-          // Scroll to the clicked section
-          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-          console.log("Scrolled to: " + targetId);
-        }
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
       }
 
-      // Close the circular navigation menu
+      // Close floating navigation menu after any link click
       const navToggle = document.getElementById("nav-toggle");
       if (navToggle) {
         navToggle.checked = false;
@@ -64,32 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 3. Back to Home button inside About section
-  document.querySelectorAll(".back-to-home").forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        aboutSection.classList.add("section-hidden");
-        document.body.classList.remove("about-visible");
-      }
-
-      // Scroll back to top of homepage
-      document.getElementById("home").scrollIntoView({ behavior: "smooth" });
-
-      console.log("Returned to home view");
-    });
-  });
-
-  // 4. Close circular nav when clicking outside it
+  // 3. Close floating nav when clicking anywhere outside it
   document.addEventListener("click", (e) => {
     const navContainer = document.querySelector(".floating-nav");
     const navToggle = document.getElementById("nav-toggle");
 
+    // Only close if menu is open and click is not inside nav area
     if (navToggle && navToggle.checked && !navContainer.contains(e.target)) {
       navToggle.checked = false;
-      console.log("Nav closed by outside click");
     }
   });
 });
