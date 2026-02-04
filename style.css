@@ -154,6 +154,34 @@ footer {
   color: #64748b;
 }
 
+.footer-signup {
+  margin: 2rem 0;
+  font-size: 1.1rem;
+}
+
+.mini-form {
+  display: flex;
+  max-width: 400px;
+  margin: 1rem auto;
+  gap: 0.5rem;
+}
+
+.mini-form input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.mini-form button {
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 .footer-links {
   margin-top: 1.5rem;
   display: flex;
@@ -182,7 +210,7 @@ footer {
   font-size: 1.4rem;
 }
 
-/* Instagram logo styling */
+/* Instagram logo */
 .ig-logo {
   width: 32px;
   height: 32px;
@@ -192,6 +220,80 @@ footer {
 
 .ig-link:hover .ig-logo {
   transform: scale(1.15);
+}
+
+/* Social Proof */
+.social-proof {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #475569;
+  text-align: center;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 6rem 0;
+  text-align: center;
+  background: #f8fafc;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 3rem auto;
+}
+
+.quote {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  font-style: italic;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  color: #64748b;
+}
+
+/* Roadmap */
+.roadmap {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.timeline {
+  max-width: 700px;
+  margin: 3rem auto;
+  text-align: left;
+}
+
+.milestone {
+  padding: 1.5rem;
+  background: #f1f5f9;
+  border-left: 4px solid #1d4ed8;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 /* Small circular logo */
@@ -356,105 +458,6 @@ footer {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Waitlist Form */
-.waitlist-section {
-  background: #f8fafc;
-  padding: 2.8rem 2rem;
-  border-radius: 1.5rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
-  margin: 3.5rem auto;
-  max-width: 680px;
-  text-align: center;
-}
-
-.waitlist-section h2 {
-  font-size: 2.4rem;
-  margin-bottom: 1.2rem;
-  color: #1e293b;
-}
-
-.waitlist-form {
-  max-width: 460px;
-  margin: 0 auto;
-}
-
-.waitlist-form input {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  font-size: 1.1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 0.75rem;
-  margin-bottom: 1.25rem;
-  transition: all 0.2s;
-}
-
-.waitlist-form input:focus {
-  outline: none;
-  border-color: #1d4ed8;
-  box-shadow: 0 0 0 3px rgba(29,78,216,0.15);
-}
-
-.form-note {
-  font-size: 0.97rem;
-  color: #64748b;
-  margin-top: 1.4rem;
-}
-
-/* About Section */
-.about {
-  padding: 6rem 0 8rem;
-  background: #f9fafb;
-  text-align: center;
-}
-
-.about .lead {
-  font-size: 1.38rem;
-  line-height: 1.7;
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
-  color: #334155;
-  font-weight: 500;
-}
-
-.about h3 {
-  font-size: 1.75rem;
-  margin: 3rem 0 1.25rem;
-  color: #1e293b;
-}
-
-.values {
-  list-style: none;
-  max-width: 580px;
-  margin: 0 auto 3rem;
-  text-align: left;
-  font-size: 1.1rem;
-}
-
-.values li {
-  margin: 1.1rem 0;
-  padding-left: 1.8rem;
-  position: relative;
-}
-
-.values li::before {
-  content: "✓";
-  color: #1d4ed8;
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
-.about-cta {
-  margin-top: 3.5rem;
-}
-
-.small-note {
-  margin-top: 1rem;
-  font-size: 0.98rem;
-  color: #64748b;
 }
 
 /* No underlines on links */
