@@ -155,17 +155,26 @@ footer {
 }
 
 .footer-links {
-  margin-top: 1.2rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-.footer-links a {
-  margin: 0 1.25rem;
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
   color: #1d4ed8;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.contact-item:hover {
   color: #1e40af;
+  text-decoration: underline;
 }
 
 /* Small circular logo */
@@ -379,7 +388,7 @@ footer {
 
 /* About Section */
 .about {
-  padding: 8rem 0 6rem;
+  padding: 6rem 0 8rem;
   background: #f9fafb;
   text-align: center;
 }
@@ -429,17 +438,6 @@ footer {
   margin-top: 1rem;
   font-size: 0.98rem;
   color: #64748b;
-}
-
-/* Hide main content when About is visible */
-body.about-visible .main-content,
-body.about-visible header {
-  display: none;
-}
-
-/* Hide section by default */
-.section-hidden {
-  display: none;
 }
 
 /* No underlines on links */
