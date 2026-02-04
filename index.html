@@ -33,18 +33,10 @@
     </label>
 
     <ul class="nav-menu">
-      <li class="nav-item" style="--i:0">
-        <a href="#home" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item" style="--i:1">
-        <a href="#platforms" class="nav-link">Platforms</a>
-      </li>
-      <li class="nav-item" style="--i:2">
-        <a href="#about" class="nav-link">About</a>
-      </li>
-      <li class="nav-item" style="--i:3">
-        <a href="#contact" class="nav-link">Contact</a>
-      </li>
+      <li class="nav-item" style="--i:0"><a href="#home" class="nav-link">Home</a></li>
+      <li class="nav-item" style="--i:1"><a href="#platforms" class="nav-link">Platforms</a></li>
+      <li class="nav-item" style="--i:2"><a href="#mission" class="nav-link">Mission</a></li>
+      <li class="nav-item" style="--i:3"><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </div>
 
@@ -53,11 +45,38 @@
       <h1>Zynx Corporation</h1>
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
       <p class="status">Currently under development • Early access for serious builders only</p>
+
+      <!-- Waitlist form - placed high in header -->
+      <div class="waitlist-section fade-in">
+        <h2>Join the Zynx Waitlist</h2>
+        <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
+           Limited spots • Serious builders & early adopters only • No spam</p>
+
+        <form action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required 
+          >
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Your name (optional)" 
+          >
+          <input type="hidden" name="_subject" value="New Zynx Waitlist Signup">
+          <input type="hidden" name="_gotcha" style="display:none">
+
+          <button type="submit" class="btn large">Join Waitlist →</button>
+        </form>
+
+        <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <section class="mission fade-in">
+    <section id="mission" class="mission fade-in">
       <h2>Our Mission</h2>
       <p>Zynx Corporation is the parent entity creating specialized AI companies that solve real-world challenges — from everyday errands and education to global trade and intelligent systems. We build scalable, impactful platforms that empower people and drive progress worldwide.</p>
     </section>
@@ -65,7 +84,6 @@
     <section id="platforms" class="platforms fade-in">
       <h2>Our AI Platforms</h2>
       <div class="grid">
-
         <div class="card fade-in">
           <h3>ErrandAI</h3>
           <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
@@ -83,25 +101,24 @@
 
         <div class="card fade-in">
           <h3>World Forge</h3>
-          <p>World Forge is your personal, private intelligence engine — a cross-platform, offline-first desktop and mobile application that lets you securely ingest, index, analyze, and monitor your own documents, notes, news, financial records, and more. Using local AI, it keeps everything under your control, detects potential surveillance risks, and protects your privacy completely.</p>
+          <p>World Forge is your personal, private intelligence engine — offline-first, local AI for documents, notes, news, finances and more.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
 
         <div class="card fade-in">
           <h3>Nexara Forge</h3>
-          <p>Nexara Forge is a cross-platform mobile app for Android and iOS that turns any user-described problem into instantly executable custom software using natural language prompts. Powered by advanced AI models for code generation, it builds, tests, and deploys mini-tools, scripts, widgets, or integrations — all running directly on your device or in a secure cloud sandbox, making software creation fast, accessible, and effortless.</p>
+          <p>Cross-platform mobile app that turns natural language prompts into instantly executable custom software on-device or in secure sandbox.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
-
       </div>
     </section>
 
     <section class="cta fade-in">
       <h2>Early Access Awaits</h2>
       <p>Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.</p>
-      <a href="https://errandai.app/" target="_blank" class="btn large">Join ErrandAI Waitlist →</a>
+      <a href="#home" class="btn large scroll-to-top">Back to Waitlist ↑</a>
       <p>No spam • Serious early adopters & builders only</p>
     </section>
   </main>
@@ -109,9 +126,12 @@
   <footer id="contact">
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
     <p>Forging the future of AI-driven opportunity.</p>
-    <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank" class="social-link">
-      Follow us on Instagram @zynx.corporation
-    </a>
+    <div class="footer-links">
+      <a href="mailto:hello@zynxcorp.com" class="social-link">hello@zynxcorp.com</a>
+      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" target="_blank" class="social-link">
+        Follow us on Instagram @zynx.corporation
+      </a>
+    </div>
   </footer>
 
   <script src="script.js"></script>
