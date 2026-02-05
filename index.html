@@ -30,7 +30,7 @@
 
   <!-- Small circular logo -->
   <div class="logo-corner">
-    <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Logo" class="small-logo">
+    <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Corporation Logo" class="small-logo">
   </div>
 
   <!-- Dark mode toggle -->
@@ -56,20 +56,22 @@
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
       <p class="status">Currently under development • Early access for serious builders only</p>
 
-      <!-- Waitlist card -->
-      <div class="waitlist-card fade-in floating-card">
+      <!-- Waitlist form – floating card style -->
+      <div class="waitlist-card floating-card fade-in">
         <div class="waitlist-section">
           <h2>Join the Zynx Waitlist</h2>
           <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
              Limited spots • Serious builders & early adopters only • No spam</p>
 
-          <form id="waitlist-form" class="waitlist-form">
+          <form action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="text" name="name" placeholder="Your name (optional)">
             <input type="hidden" name="_subject" value="New Zynx Waitlist Signup">
             <input type="hidden" name="_gotcha" style="display:none">
             <button type="submit" class="btn large">Join Waitlist →</button>
           </form>
+
+          <p class="waitlist-success">✅ Thanks! You’ve joined the waitlist.</p>
 
           <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
 
@@ -78,8 +80,7 @@
             <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
           </div>
 
-          <!-- Success message -->
-          <p id="waitlist-success" class="waitlist-success">🎉 Thank you for joining the waitlist!</p>
+          <button class="btn back-to-waitlist">Back to Top ↑</button>
         </div>
       </div>
     </div>
@@ -120,73 +121,60 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials fade-in">
       <h2>What Early Builders Say</h2>
       <div class="quote-grid">
-        <div class="quote floating-card">
-          <div class="quote-avatar">
-            <img src="https://via.placeholder.com/60" alt="Avatar 1">
-          </div>
+        <div class="quote">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar" class="avatar">
           <p>"Zynx is exactly what we've been waiting for — privacy-first AI without the Big Tech lock-in."</p>
           <cite>— Nairobi-based developer (Alpha user)</cite>
         </div>
-        <div class="quote floating-card">
-          <div class="quote-avatar">
-            <img src="https://via.placeholder.com/60" alt="Avatar 2">
-          </div>
+        <div class="quote">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar" class="avatar">
           <p>"The waitlist alone feels like being part of something big. Can't wait for ErrandAI."</p>
           <cite>— Freelancer, Mombasa</cite>
         </div>
       </div>
     </section>
 
-    <!-- Roadmap -->
     <section class="roadmap fade-in">
       <h2>Roadmap</h2>
       <div class="timeline">
-        <div class="milestone floating-card">Q1 2026 — Alpha launch of ErrandAI & AlphaTrade</div>
-        <div class="milestone floating-card">Q2 2026 — World Forge private beta</div>
-        <div class="milestone floating-card">Q3 2026 — Nexara Forge mobile app early access</div>
-        <div class="milestone floating-card">2027 — Full ecosystem integration & open APIs</div>
+        <div class="milestone">Q1 2026 — Alpha launch of ErrandAI & AlphaTrade</div>
+        <div class="milestone">Q2 2026 — World Forge private beta</div>
+        <div class="milestone">Q3 2026 — Nexara Forge mobile app early access</div>
+        <div class="milestone">2027 — Full ecosystem integration & open APIs</div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta fade-in">
       <h2>Early Access Awaits</h2>
       <p>Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.</p>
-      <a href="#home" class="btn large scroll-to-top">Back to Waitlist ↑</a>
+      <button class="btn scroll-to-top">Back to Top ↑</button>
       <p>No spam • Serious early adopters & builders only</p>
 
-      <!-- About card -->
-      <div class="about-card fade-in floating-card">
+      <div class="about-card floating-card fade-in">
         <section id="about" class="about">
           <div class="container">
             <h2>About Zynx Corporation</h2>
-            <p class="lead">
-              Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.
-            </p>
-            <p>
-              We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.
-            </p>
-            <p>
-              <strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.
-            </p>
+            <p class="lead">Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders.</p>
+            <p>We create specialized AI solutions that solve real-world problems — from local errands to trading, personal knowledge management, and on-device code generation.</p>
+            <p><strong>Registered in the United States</strong> — supporting global scalability and long-term growth.</p>
+
             <h3>Our Mission</h3>
-            <p>
-              To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.
-            </p>
+            <p>To make powerful AI infrastructure available to everyone by delivering ethical, scalable, and user-owned tools that respect personal data boundaries.</p>
+
             <h3>What We Stand For</h3>
             <ul class="values">
-              <li>Privacy by design — data stays under user control</li>
-              <li>Accessibility — powerful tools that don’t require deep technical knowledge</li>
-              <li>Local-first whenever possible — reduce dependency on cloud surveillance</li>
-              <li>Builder mindset — we create for people who want to create</li>
-              <li>Transparency — clear communication, no hidden black boxes</li>
+              <li>Privacy by design</li>
+              <li>Accessibility</li>
+              <li>Local-first whenever possible</li>
+              <li>Builder mindset</li>
+              <li>Transparency</li>
             </ul>
+
             <div class="about-cta">
-              <a href="#home" class="btn large">Back to Top ↑</a>
+              <button class="btn scroll-to-top">Back to Top ↑</button>
             </div>
           </div>
         </section>
@@ -210,6 +198,7 @@
       <a href="mailto:hello@zynxcorp.com" class="contact-item email-link">
         ✉️ hello@zynxcorp.com
       </a>
+
       <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" 
          class="contact-item ig-link" 
          target="_blank" 
