@@ -1,10 +1,11 @@
-/* style.css - Zynx Corporation (iOS Smooth Version) */
+
+/* style.css - Zynx Corporation */
 
 :root {
   --bg: #ffffff;
   --text: #1e293b;
   --card-bg: #ffffff;
-  --float-bg: rgba(248,250,252,0.6);   /* light grey with slight transparency */
+  --float-bg: #f8fafc;          /* light grey for floating cards */
   --muted: #64748b;
   --border: #e2e8f0;
   --accent: #1d4ed8;
@@ -17,7 +18,7 @@ body.dark {
   --bg: #0f172a;
   --text: #e2e8f0;
   --card-bg: #1e293b;
-  --float-bg: rgba(30,41,59,0.6);
+  --float-bg: #1e293b;          /* darker grey in dark mode */
   --muted: #94a3b8;
   --border: #334155;
   --accent: #60a5fa;
@@ -26,30 +27,21 @@ body.dark {
   --shadow-hover: rgba(0,0,0,0.6);
 }
 
-html {
-  scroll-behavior: smooth; 
-  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   min-height: 100vh;
-  transition: background 0.5s ease, color 0.5s ease;
-  overscroll-behavior-y: contain;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Header */
 header {
   padding: 10rem 0 6rem;
   text-align: center;
@@ -77,7 +69,7 @@ h1 {
   font-weight: 500;
 }
 
-/* Floating cards */
+/* Floating card wrapper for waitlist and about sections */
 .waitlist-card,
 .about-card {
   background: var(--float-bg);
@@ -86,16 +78,14 @@ h1 {
   margin: 2.5rem auto;
   max-width: 900px;
   box-shadow: 0 10px 30px var(--shadow);
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, backdrop-filter 0.4s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .waitlist-card:hover,
 .about-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px var(--shadow-hover);
 }
 
 .waitlist-section {
@@ -116,7 +106,7 @@ h1 {
   margin-bottom: 1.25rem;
   background: var(--card-bg);
   color: var(--text);
-  transition: all 0.25s ease;
+  transition: all 0.2s;
 }
 
 .waitlist-form input:focus {
@@ -154,7 +144,6 @@ h1 {
   100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
 }
 
-/* Grid for platforms */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -167,7 +156,7 @@ h1 {
   border-radius: 1rem;
   padding: 2.5rem;
   box-shadow: 0 4px 6px -1px var(--shadow), 0 2px 4px -1px var(--shadow);
-  transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
   transform: translateY(40px);
 }
@@ -193,7 +182,6 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Badges */
 .badge-live {
   background: #064e3b;
   color: #6ee7b7;
@@ -214,7 +202,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Buttons */
 .btn {
   background: var(--accent);
   color: white;
@@ -224,15 +211,15 @@ h1 {
   font-weight: 600;
   font-size: 1.125rem;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.25,0.8,0.25,1);
+  transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
 }
 
 .btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 14px 28px rgba(29,78,216,0.25);
   background: var(--accent-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(29,78,216,0.3);
 }
 
 .btn.large {
@@ -246,7 +233,6 @@ h1 {
   cursor: not-allowed;
 }
 
-/* CTA */
 .cta {
   text-align: center;
   padding: 6rem 2rem;
@@ -258,7 +244,6 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Footer */
 footer {
   padding: 3rem 2rem;
   text-align: center;
@@ -296,7 +281,6 @@ footer {
   cursor: pointer;
 }
 
-/* Footer links */
 .footer-links {
   margin-top: 1.5rem;
   display: flex;
@@ -394,17 +378,13 @@ footer {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: none;
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 1002;
   color: var(--text);
-  transition: transform 0.3s ease, color 0.3s ease;
-  border-radius: 50%;
-  padding: 0.4rem 0.5rem;
+  transition: transform 0.3s, color 0.3s;
 }
 
 .theme-btn:hover {
@@ -456,7 +436,7 @@ footer {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 6px 20px var(--shadow);
-  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+  transition: all 0.4s ease;
   border: 2px solid #ffffff;
 }
 
@@ -512,7 +492,7 @@ footer {
   pointer-events: none;
   opacity: 0;
   transform: scale(0);
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 #nav-toggle:checked ~ .nav-menu {
@@ -549,7 +529,7 @@ footer {
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 6px 20px var(--shadow);
-  transition: all 0.35s cubic-bezier(0.25,0.8,0.25,1);
+  transition: all 0.3s ease;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -567,7 +547,7 @@ footer {
 .fade-in {
   opacity: 0;
   transform: translateY(50px);
-  transition: all 1s cubic-bezier(0.22,1,0.36,1);
+  transition: all 0.9s ease-out;
 }
 
 .fade-in.visible {
@@ -575,8 +555,10 @@ footer {
   transform: translateY(0);
 }
 
-/* Remove underlines */
-a { text-decoration: none !important; }
+/* No underlines on links */
+a {
+  text-decoration: none !important;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -590,4 +572,6 @@ a { text-decoration: none !important; }
   .theme-btn { top: 1rem; right: 1rem; font-size: 1.5rem; }
   .waitlist-card, .about-card { 
     padding: 2rem; 
-    margin: 1.5rem
+    margin: 1.5rem 1rem; 
+  }
+}
