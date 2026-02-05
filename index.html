@@ -30,7 +30,7 @@
 
   <!-- Small circular logo -->
   <div class="logo-corner">
-    <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Corporation Logo" class="small-logo">
+    <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Logo" class="small-logo">
   </div>
 
   <!-- Dark mode toggle -->
@@ -42,7 +42,6 @@
     <label for="nav-toggle" class="nav-btn">
       <span class="nav-icon"></span>
     </label>
-
     <ul class="nav-menu">
       <li class="nav-item" style="--i:0"><a href="#home" class="nav-link">Home</a></li>
       <li class="nav-item" style="--i:1"><a href="#platforms" class="nav-link">Platforms</a></li>
@@ -58,18 +57,17 @@
       <p class="status">Currently under development • Early access for serious builders only</p>
 
       <!-- Waitlist card -->
-      <div class="waitlist-card fade-in float-card" id="waitlist-section">
+      <div class="waitlist-card fade-in floating-card">
         <div class="waitlist-section">
           <h2>Join the Zynx Waitlist</h2>
           <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
              Limited spots • Serious builders & early adopters only • No spam</p>
 
-          <form id="waitlist-form" action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
+          <form id="waitlist-form" class="waitlist-form">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="text" name="name" placeholder="Your name (optional)">
             <input type="hidden" name="_subject" value="New Zynx Waitlist Signup">
             <input type="hidden" name="_gotcha" style="display:none">
-
             <button type="submit" class="btn large">Join Waitlist →</button>
           </form>
 
@@ -79,26 +77,19 @@
             <p><strong>1,247</strong> builders already on the waitlist</p>
             <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
           </div>
+
+          <!-- Success message -->
+          <p id="waitlist-success" class="waitlist-success">🎉 Thank you for joining the waitlist!</p>
         </div>
       </div>
-
-      <!-- Success message after joining -->
-      <div id="success-message" class="success-message fade-in" style="display:none;">
-        <h2>Thank You for Joining!</h2>
-        <p>You are now on the priority waitlist for early access.</p>
-        <button id="back-to-waitlist" class="btn large">Back to Waitlist ↑</button>
-      </div>
-
     </div>
   </header>
 
   <main class="container">
-
-    <!-- Platforms Section -->
     <section id="platforms" class="platforms fade-in">
       <h2>Our AI Platforms</h2>
       <div class="grid">
-        <div class="card fade-in float-card">
+        <div class="card fade-in floating-card">
           <h3>ErrandAI</h3>
           <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
           <span class="badge-live">Live (Alpha)</span>
@@ -106,21 +97,21 @@
           <p>Join waitlist or download now</p>
         </div>
 
-        <div class="card fade-in float-card">
+        <div class="card fade-in floating-card">
           <h3>AlphaTrade Global</h3>
           <p>AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.</p>
           <span class="badge-live">Live</span>
           <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade Global →</a>
         </div>
 
-        <div class="card fade-in float-card">
+        <div class="card fade-in floating-card">
           <h3>World Forge</h3>
           <p>World Forge is your personal, private intelligence engine — offline-first, local AI for documents, notes, news, finances and more.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
 
-        <div class="card fade-in float-card">
+        <div class="card fade-in floating-card">
           <h3>Nexara Forge</h3>
           <p>Cross-platform mobile app that turns natural language prompts into instantly executable custom software on-device or in secure sandbox.</p>
           <span class="badge-dev">Under Development</span>
@@ -133,11 +124,17 @@
     <section class="testimonials fade-in">
       <h2>What Early Builders Say</h2>
       <div class="quote-grid">
-        <div class="quote">
+        <div class="quote floating-card">
+          <div class="quote-avatar">
+            <img src="https://via.placeholder.com/60" alt="Avatar 1">
+          </div>
           <p>"Zynx is exactly what we've been waiting for — privacy-first AI without the Big Tech lock-in."</p>
           <cite>— Nairobi-based developer (Alpha user)</cite>
         </div>
-        <div class="quote">
+        <div class="quote floating-card">
+          <div class="quote-avatar">
+            <img src="https://via.placeholder.com/60" alt="Avatar 2">
+          </div>
           <p>"The waitlist alone feels like being part of something big. Can't wait for ErrandAI."</p>
           <cite>— Freelancer, Mombasa</cite>
         </div>
@@ -148,10 +145,10 @@
     <section class="roadmap fade-in">
       <h2>Roadmap</h2>
       <div class="timeline">
-        <div class="milestone">Q1 2026 — Alpha launch of ErrandAI & AlphaTrade</div>
-        <div class="milestone">Q2 2026 — World Forge private beta</div>
-        <div class="milestone">Q3 2026 — Nexara Forge mobile app early access</div>
-        <div class="milestone">2027 — Full ecosystem integration & open APIs</div>
+        <div class="milestone floating-card">Q1 2026 — Alpha launch of ErrandAI & AlphaTrade</div>
+        <div class="milestone floating-card">Q2 2026 — World Forge private beta</div>
+        <div class="milestone floating-card">Q3 2026 — Nexara Forge mobile app early access</div>
+        <div class="milestone floating-card">2027 — Full ecosystem integration & open APIs</div>
       </div>
     </section>
 
@@ -162,16 +159,24 @@
       <a href="#home" class="btn large scroll-to-top">Back to Waitlist ↑</a>
       <p>No spam • Serious early adopters & builders only</p>
 
-      <!-- About Section -->
-      <div class="about-card fade-in float-card">
+      <!-- About card -->
+      <div class="about-card fade-in floating-card">
         <section id="about" class="about">
           <div class="container">
             <h2>About Zynx Corporation</h2>
-            <p class="lead">Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.</p>
-            <p>We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.</p>
-            <p><strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.</p>
+            <p class="lead">
+              Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.
+            </p>
+            <p>
+              We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.
+            </p>
+            <p>
+              <strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.
+            </p>
             <h3>Our Mission</h3>
-            <p>To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.</p>
+            <p>
+              To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.
+            </p>
             <h3>What We Stand For</h3>
             <ul class="values">
               <li>Privacy by design — data stays under user control</li>
@@ -187,10 +192,8 @@
         </section>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer id="contact">
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
     <p>Forging the future of AI-driven opportunity.</p>
@@ -204,9 +207,18 @@
     </div>
 
     <div class="footer-links">
-      <a href="mailto:hello@zynxcorp.com" class="contact-item email-link">✉️ hello@zynxcorp.com</a>
-      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" class="contact-item ig-link" target="_blank" rel="noopener noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png" alt="Instagram" class="ig-logo">
+      <a href="mailto:hello@zynxcorp.com" class="contact-item email-link">
+        ✉️ hello@zynxcorp.com
+      </a>
+      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" 
+         class="contact-item ig-link" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png" 
+          alt="Instagram" 
+          class="ig-logo"
+        >
         Follow us on Instagram @zynx.corporation
       </a>
     </div>
