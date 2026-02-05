@@ -42,6 +42,7 @@
     <label for="nav-toggle" class="nav-btn">
       <span class="nav-icon"></span>
     </label>
+
     <ul class="nav-menu">
       <li class="nav-item" style="--i:0"><a href="#home" class="nav-link">Home</a></li>
       <li class="nav-item" style="--i:1"><a href="#platforms" class="nav-link">Platforms</a></li>
@@ -56,8 +57,8 @@
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
       <p class="status">Currently under development • Early access for serious builders only</p>
 
-      <!-- Waitlist form – floating card style -->
-      <div class="waitlist-card floating-card fade-in">
+      <!-- Waitlist form – floating card -->
+      <div class="waitlist-card fade-in">
         <div class="waitlist-section">
           <h2>Join the Zynx Waitlist</h2>
           <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
@@ -71,16 +72,19 @@
             <button type="submit" class="btn large">Join Waitlist →</button>
           </form>
 
-          <p class="waitlist-success">✅ Thanks! You’ve joined the waitlist.</p>
+          <!-- Success message -->
+          <p class="success-message" style="display:none;">🎉 Thank you! You are now on the waitlist.</p>
 
-          <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
+          <div class="form-note">
+            We'll send launch updates & exclusive early invites only.
+          </div>
 
           <div class="social-proof">
             <p><strong>1,247</strong> builders already on the waitlist</p>
             <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
           </div>
 
-          <button class="btn back-to-waitlist">Back to Top ↑</button>
+          <a href="#home" class="btn small back-top">Back to Waitlist ↑</a>
         </div>
       </div>
     </div>
@@ -90,7 +94,7 @@
     <section id="platforms" class="platforms fade-in">
       <h2>Our AI Platforms</h2>
       <div class="grid">
-        <div class="card fade-in floating-card">
+        <div class="card fade-in">
           <h3>ErrandAI</h3>
           <p>AI-powered platform connecting people who need quick errands (delivery, shopping, tutoring, homework help) with trusted local runners.</p>
           <span class="badge-live">Live (Alpha)</span>
@@ -98,21 +102,21 @@
           <p>Join waitlist or download now</p>
         </div>
 
-        <div class="card fade-in floating-card">
+        <div class="card fade-in">
           <h3>AlphaTrade Global</h3>
           <p>AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.</p>
           <span class="badge-live">Live</span>
           <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade Global →</a>
         </div>
 
-        <div class="card fade-in floating-card">
+        <div class="card fade-in">
           <h3>World Forge</h3>
           <p>World Forge is your personal, private intelligence engine — offline-first, local AI for documents, notes, news, finances and more.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
 
-        <div class="card fade-in floating-card">
+        <div class="card fade-in">
           <h3>Nexara Forge</h3>
           <p>Cross-platform mobile app that turns natural language prompts into instantly executable custom software on-device or in secure sandbox.</p>
           <span class="badge-dev">Under Development</span>
@@ -125,14 +129,19 @@
       <h2>What Early Builders Say</h2>
       <div class="quote-grid">
         <div class="quote">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar" class="avatar">
-          <p>"Zynx is exactly what we've been waiting for — privacy-first AI without the Big Tech lock-in."</p>
-          <cite>— Nairobi-based developer (Alpha user)</cite>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/100px-Portrait_Placeholder.png" alt="User avatar" class="avatar">
+          <div>
+            <p>"Zynx is exactly what we've been waiting for — privacy-first AI without the Big Tech lock-in."</p>
+            <cite>— Nairobi-based developer (Alpha user)</cite>
+          </div>
         </div>
+
         <div class="quote">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar" class="avatar">
-          <p>"The waitlist alone feels like being part of something big. Can't wait for ErrandAI."</p>
-          <cite>— Freelancer, Mombasa</cite>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/100px-Portrait_Placeholder.png" alt="User avatar" class="avatar">
+          <div>
+            <p>"The waitlist alone feels like being part of something big. Can't wait for ErrandAI."</p>
+            <cite>— Freelancer, Mombasa</cite>
+          </div>
         </div>
       </div>
     </section>
@@ -150,31 +159,42 @@
     <section class="cta fade-in">
       <h2>Early Access Awaits</h2>
       <p>Zynx Corporation and its platforms are in active development. Join the waitlist for priority access, updates, and early invites.</p>
-      <button class="btn scroll-to-top">Back to Top ↑</button>
+      <a href="#home" class="btn large scroll-to-top">Back to Waitlist ↑</a>
       <p>No spam • Serious early adopters & builders only</p>
 
-      <div class="about-card floating-card fade-in">
+      <div class="about-card fade-in">
         <section id="about" class="about">
           <div class="container">
             <h2>About Zynx Corporation</h2>
-            <p class="lead">Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders.</p>
-            <p>We create specialized AI solutions that solve real-world problems — from local errands to trading, personal knowledge management, and on-device code generation.</p>
-            <p><strong>Registered in the United States</strong> — supporting global scalability and long-term growth.</p>
+
+            <p class="lead">
+              Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.
+            </p>
+
+            <p>
+              We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.
+            </p>
+
+            <p>
+              <strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.
+            </p>
 
             <h3>Our Mission</h3>
-            <p>To make powerful AI infrastructure available to everyone by delivering ethical, scalable, and user-owned tools that respect personal data boundaries.</p>
+            <p>
+              To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.
+            </p>
 
             <h3>What We Stand For</h3>
             <ul class="values">
-              <li>Privacy by design</li>
-              <li>Accessibility</li>
-              <li>Local-first whenever possible</li>
-              <li>Builder mindset</li>
-              <li>Transparency</li>
+              <li>Privacy by design — data stays under user control</li>
+              <li>Accessibility — powerful tools that don’t require deep technical knowledge</li>
+              <li>Local-first whenever possible — reduce dependency on cloud surveillance</li>
+              <li>Builder mindset — we create for people who want to create</li>
+              <li>Transparency — clear communication, no hidden black boxes</li>
             </ul>
 
             <div class="about-cta">
-              <button class="btn scroll-to-top">Back to Top ↑</button>
+              <a href="#home" class="btn large">Back to Top ↑</a>
             </div>
           </div>
         </section>
