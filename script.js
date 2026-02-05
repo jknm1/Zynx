@@ -55,13 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dark mode toggle
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
+    // Load saved preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️';
+    }
+
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      
+      if (document.body.classList.contains('dark')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('darkMode', 'disabled');
+      }
     });
   }
 
-  // Track waitlist signups in GA4 (fires on submit)
+  // Track waitlist signups in GA4
   const waitlistForm = document.querySelector('.waitlist-form');
   if (waitlistForm) {
     waitlistForm.addEventListener('submit', function() {
