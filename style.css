@@ -1,10 +1,10 @@
-/* style.css - Zynx Corporation */
+/* style.css - Zynx Corporation – Mobile-optimized version */
 
 :root {
   --bg: #ffffff;
   --text: #1e293b;
   --card-bg: #ffffff;
-  --float-bg: #f8fafc;          /* light grey for floating cards */
+  --float-bg: #f8fafc;
   --muted: #64748b;
   --border: #e2e8f0;
   --accent: #1d4ed8;
@@ -17,7 +17,7 @@ body.dark {
   --bg: #0f172a;
   --text: #e2e8f0;
   --card-bg: #1e293b;
-  --float-bg: #1e293b;          /* darker grey in dark mode */
+  --float-bg: #1e293b;
   --muted: #94a3b8;
   --border: #334155;
   --accent: #60a5fa;
@@ -33,6 +33,22 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   transition: background 0.4s ease, color 0.4s ease;
+  margin: 0;
+  overflow-x: hidden;                     /* Prevents horizontal scroll on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GLOBAL FIX: Prevent text overflow on narrow screens – especially important for headings */
+h1, h2, h3, h4, h5, h6,
+.subtitle, .status, .card h3, .card p,
+.about-card p, .quote p, .milestone,
+.cta h2, .form-note, .social-proof p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  word-break: break-word;                 /* Breaks very long words if necessary */
+  max-width: 100%;
 }
 
 .container {
@@ -106,6 +122,7 @@ h1 {
   background: var(--card-bg);
   color: var(--text);
   transition: all 0.2s;
+  min-height: 48px;                       /* Better touch target on mobile */
 }
 
 .waitlist-form input:focus {
@@ -213,6 +230,11 @@ h1 {
   transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
+  min-height: 48px;
+  min-width: 140px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:hover {
@@ -269,6 +291,7 @@ footer {
   border-radius: 0.5rem;
   background: var(--card-bg);
   color: var(--text);
+  min-height: 44px;
 }
 
 .mini-form button {
@@ -278,6 +301,7 @@ footer {
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  min-height: 44px;
 }
 
 .footer-links {
@@ -559,18 +583,44 @@ a {
   text-decoration: none !important;
 }
 
-/* Responsive */
+/* ────────────────────────────────────────────────
+   RESPONSIVE – MOBILE FIRST ENHANCEMENTS
+───────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .container { padding: 0 1.5rem; }
+}
+
 @media (max-width: 768px) {
-  h1 { font-size: 3.5rem; }
-  h2 { font-size: 2.25rem; }
-  header { padding: 6rem 1rem 4rem; }
-  .small-logo { width: 50px; height: 50px; }
-  .logo-corner { top: 1rem; left: 1rem; }
-  .floating-nav { top: 1rem; left: 70px; }
-  .nav-btn { width: 50px; height: 50px; }
-  .theme-btn { top: 1rem; right: 1rem; font-size: 1.5rem; }
-  .waitlist-card, .about-card { 
-    padding: 2rem; 
-    margin: 1.5rem 1rem; 
-  }
+  h1              { font-size: 3.5rem; }
+  h2              { font-size: 2.25rem; }
+  .subtitle       { font-size: 1.4rem; }
+  header          { padding: 6rem 0 4rem; }
+  .small-logo     { width: 50px; height: 50px; }
+  .logo-corner    { top: 1rem; left: 1rem; }
+  .floating-nav   { top: 1rem; left: 70px; }
+  .nav-btn        { width: 50px; height: 50px; }
+  .theme-btn      { top: 1rem; right: 1rem; font-size: 1.5rem; }
+  .waitlist-card,
+  .about-card     { padding: 2rem; margin: 1.5rem 0.5rem; border-radius: 1.2rem; }
+  .grid           { gap: 1.5rem; }
+  .card           { padding: 2rem; }
+  .btn            { font-size: 1rem; padding: 1rem 2rem; }
+  .btn.large      { font-size: 1.1rem; padding: 1.1rem 2.5rem; }
+}
+
+@media (max-width: 480px) {
+  h1              { font-size: 2.8rem; letter-spacing: -0.03em; }
+  h2              { font-size: 2rem; }
+  .subtitle       { font-size: 1.25rem; }
+  header          { padding: 5rem 0 3rem; }
+  .container      { padding: 0 1rem; }
+  .waitlist-card,
+  .about-card     { padding: 1.6rem; margin: 1.2rem 0.5rem; border-radius: 1rem; }
+  .waitlist-form input,
+  .mini-form input { font-size: 1rem; padding: 0.9rem 1.1rem; }
+  .btn            { width: 100%; margin: 0.5rem 0; }
+  .nav-menu       { width: 220px; height: 220px; margin: -110px 0 0 -110px; }
+  .nav-link       { width: 80px; height: 80px; line-height: 80px; font-size: 0.9rem; }
+  .floating-nav   { left: 65px; }
 }
