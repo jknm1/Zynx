@@ -553,3 +553,12 @@ footer a {
     grid-template-columns: 1fr;
   }
 }
+/* Footer Instagram Logo Fix */
+.footer-links .ig-logo {
+  width: 24px;        /* Make it small */
+  height: 24px;       /* Square to keep aspect ratio */
+  object-fit: cover;  /* Keep it proportional */
+  border-radius: 50%; /* Circle shape */
+  vertical-align: middle;
+  margin-right: 0.5rem; /* Space between icon and text */
+}
