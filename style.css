@@ -1,387 +1,491 @@
-/* -----------------------------
-   Zynx Corporation Full Styles
--------------------------------*/
-
-/* RESET & BASE */
+/* ------------------------- */
+/* Global Styles */
+/* ------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body {
   font-family: 'Inter', sans-serif;
-  background-color: #f5f5f5;
-  color: #222;
+}
+
+body {
+  background: #f8f8f8;
+  color: #111;
   line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s, color 0.3s;
 }
+
 body.dark {
-  background-color: #121212;
-  color: #f0f0f0;
+  background: #111;
+  color: #f8f8f8;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
+/* ------------------------- */
+/* Containers */
+/* ------------------------- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* -----------------------------
-   BUTTONS
-------------------------------- */
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.6rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #222;
-  color: #fff;
-  font-weight: 500;
-  transition: transform 0.2s, background 0.3s;
-}
-.btn:hover {
-  transform: translateY(-2px);
-  background-color: #333;
-}
-.btn-large {
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-}
-.btn-disabled {
-  background-color: #999;
-  cursor: not-allowed;
-}
-
-/* -----------------------------
-   FADE-IN ANIMATION
-------------------------------- */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* -----------------------------
-   FLOATING NAVIGATION
-------------------------------- */
-.floating-nav {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 1000;
-}
-.nav-toggle {
-  display: none;
-}
-.nav-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.nav-icon, .nav-icon::before, .nav-icon::after {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: #fff;
-  position: relative;
-  transition: all 0.3s ease;
-}
-.nav-menu {
-  list-style: none;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  display: none;
-  flex-direction: column;
-  background-color: #222;
-  border-radius: 10px;
-  padding: 1rem;
-}
-.nav-toggle:checked ~ .nav-menu {
-  display: flex;
-}
-.nav-item {
-  margin: 0.5rem 0;
-}
-.nav-link {
-  color: #fff;
-  font-weight: 500;
-}
-
-/* -----------------------------
-   LOGO
-------------------------------- */
+/* ------------------------- */
+/* Logo Corner */
+/* ------------------------- */
 .logo-corner {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 10px;
+  left: 10px;
   z-index: 1000;
 }
+
 .small-logo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-/* -----------------------------
-   DARK MODE BUTTON
-------------------------------- */
+/* ------------------------- */
+/* Dark Mode Toggle Button */
+/* ------------------------- */
 .theme-btn {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 10px;
+  right: 10px;
   z-index: 1000;
+  padding: 0.5rem 0.8rem;
+  background: #fff;
   border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* -----------------------------
-   HEADER & WAITLIST
-------------------------------- */
-header {
-  text-align: center;
-  padding: 5rem 2rem 2rem 2rem;
-}
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-header .subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-header .status {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* Waitlist card */
-.waitlist-card {
-  display: block;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  margin: 2rem auto;
-  max-width: 600px;
-  position: relative;
-  transition: transform 0.3s;
-}
-body.dark .waitlist-card {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-.waitlist-card:hover {
-  transform: translateY(-5px);
-}
-.waitlist-card input[type="email"],
-.waitlist-card input[type="text"] {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-.waitlist-card .btn {
-  width: 100%;
-}
-.waitlist-card .form-note {
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: #555;
-}
-.waitlist-card .social-proof {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-.pulse-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #28a745;
   border-radius: 50%;
-  animation: pulse 1.5s infinite;
-  margin-right: 5px;
-}
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.7; }
-}
-
-/* Success message */
-.success-message {
-  display: none;
-  background: #d4edda;
-  border-left: 5px solid #28a745;
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: 500;
-}
-
-/* Back to waitlist button inside success */
-#back-to-waitlist {
-  margin-top: 1rem;
-  display: inline-block;
-  background: #222;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 1.2rem;
+  transition: all 0.3s;
 }
-#back-to-waitlist:hover {
-  transform: translateY(-2px);
+
+body.dark .theme-btn {
+  background: #222;
+  color: #f8f8f8;
+}
+
+/* ------------------------- */
+/* Floating Circular Nav */
+/* ------------------------- */
+.floating-nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-btn span.nav-icon {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-btn span.nav-icon::before,
+.nav-btn span.nav-icon::after {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.nav-btn span.nav-icon::before {
+  top: -8px;
+}
+
+.nav-btn span.nav-icon::after {
+  top: 8px;
+}
+
+.nav-menu {
+  list-style: none;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.nav-item {
+  margin: 5px 0;
+  transform: translateY(20px);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  background: #111;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
   background: #333;
 }
 
-/* -----------------------------
-   MAIN CONTENT
-------------------------------- */
-main h2 {
+.nav-toggle:checked + .nav-btn + .nav-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-toggle:checked + .nav-btn span.nav-icon {
+  background: transparent;
+}
+
+.nav-toggle:checked + .nav-btn span.nav-icon::before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle:checked + .nav-btn span.nav-icon::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ------------------------- */
+/* Header Section */
+/* ------------------------- */
+header {
   text-align: center;
-  margin: 3rem 0 2rem 0;
+  padding-top: 100px;
 }
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
-.card {
-  flex: 1 1 calc(50% - 1.5rem);
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+header .subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+header .status {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ------------------------- */
+/* Waitlist Card */
+/* ------------------------- */
+.waitlist-card {
+  background: #e2e2e2;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: 2rem auto;
   position: relative;
-  transition: transform 0.3s;
-}
-.card:hover { transform: translateY(-5px); }
-body.dark .card {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-.badge-live {
-  background-color: #28a745;
-  color: #fff;
-  padding: 0.2rem 0.6rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-}
-.badge-dev {
-  background-color: #ffc107;
-  color: #222;
-  padding: 0.2rem 0.6rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-}
-
-/* Floating parallax effect class */
-.float-card { transition: transform 0.2s ease-out; }
-
-/* -----------------------------
-   TESTIMONIALS
-------------------------------- */
-.testimonials .quote-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.testimonials .quote {
-  flex: 1 1 calc(50% - 1rem);
-  background-color: #fafafa;
-  border-left: 5px solid #222;
-  padding: 1rem;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-.testimonials .quote:hover { transform: translateY(-3px); }
-body.dark .testimonials .quote { background-color: #2a2a2a; }
-
-/* -----------------------------
-   ROADMAP / TIMELINE
-------------------------------- */
-.timeline { display: flex; flex-direction: column; gap: 0.7rem; }
-.milestone {
-  background-color: #fff;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
-}
-.milestone:hover { transform: translateY(-3px); }
-body.dark .milestone { background-color: #222; }
-
-/* -----------------------------
-   ABOUT SECTION
-------------------------------- */
-.about-card {
-  margin: 3rem 0;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-body.dark .about-card { background-color: #1e1e1e; color: #f0f0f0; }
-.about ul.values { list-style: disc inside; margin: 1rem 0; }
-.about-cta { margin-top: 2rem; text-align: center; }
-
-/* -----------------------------
-   FOOTER
-------------------------------- */
-footer {
-  background-color: #f5f5f5;
   text-align: center;
-  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+body.dark .waitlist-card {
+  background: #222;
+}
+
+.waitlist-card:hover {
+  transform: translateY(-5px);
+}
+
+.waitlist-section h2 {
+  margin-bottom: 1rem;
+}
+
+.waitlist-form input {
+  width: 90%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+body.dark .waitlist-form input {
+  background: #333;
+  color: #f8f8f8;
+  border: 1px solid #555;
+}
+
+.waitlist-form button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  background: #111;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.waitlist-form button:hover {
+  background: #333;
+}
+
+.waitlist-success {
+  display: none;
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+  animation: fadeSlide 0.8s forwards;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Social Proof */
+.social-proof {
+  margin-top: 1rem;
   font-size: 0.9rem;
 }
-body.dark footer { background-color: #111; color: #f0f0f0; }
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.footer-links img {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-.footer-signup input[type="email"] {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-right: 0.5rem;
+
+.pulse-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: green;
+  border-radius: 50%;
+  animation: pulse 1.2s infinite;
 }
 
-/* -----------------------------
-   RESPONSIVE
-------------------------------- */
-@media (max-width: 768px) {
-  .grid { flex-direction: column; }
-  .card { flex: 1 1 100%; }
-  .testimonials .quote-grid { flex-direction: column; }
-  .testimonials .quote { flex: 1 1 100%; }
-  header h1 { font-size: 2.5rem; }
-  header .subtitle { font-size: 1rem; }
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.7; }
+}
+
+/* ------------------------- */
+/* Platforms Grid */
+/* ------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #e2e2e2;
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+body.dark .card {
+  background: #222;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Badges */
+.badge-live {
+  display: inline-block;
+  background: #0f0;
+  color: #111;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+}
+
+.badge-dev {
+  display: inline-block;
+  background: #ff9900;
+  color: #111;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 1.5rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+.btn-large {
+  font-size: 1.1rem;
+}
+
+/* Disabled */
+.btn-disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ------------------------- */
+/* Testimonials */
+/* ------------------------- */
+.testimonials {
+  margin: 4rem 0;
+}
+
+.quote-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.quote {
+  background: #e2e2e2;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+body.dark .quote {
+  background: #222;
+}
+
+.quote-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem auto;
+  overflow: hidden;
+}
+
+.quote-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------------------- */
+/* Roadmap */
+/* ------------------------- */
+.roadmap .timeline {
+  margin-top: 2rem;
+}
+
+.milestone {
+  background: #e2e2e2;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+body.dark .milestone {
+  background: #222;
+}
+
+/* ------------------------- */
+/* About Section */
+/* ------------------------- */
+.about-card {
+  background: #e2e2e2;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+}
+
+body.dark .about-card {
+  background: #222;
+}
+
+.values {
+  margin-top: 1rem;
+  list-style: disc inside;
+}
+
+/* ------------------------- */
+/* Footer */
+/* ------------------------- */
+footer {
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  display: block;
+  margin: 0.3rem 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ig-logo {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* ------------------------- */
+/* Scroll fade-in animation */
+/* ------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating cards parallax effect */
+.floating-card {
+  will-change: transform;
+}
+
+/* Smooth scroll for buttons */
+html {
+  scroll-behavior: smooth;
 }
