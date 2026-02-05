@@ -52,14 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Thank-you message after waitlist form submit
+  // Dark mode toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+  }
+
+  // Track waitlist signups in GA4 (fires on submit)
   const waitlistForm = document.querySelector('.waitlist-form');
   if (waitlistForm) {
-    waitlistForm.addEventListener('submit', function(e) {
-      // Let Formspree process first (small delay)
-      setTimeout(() => {
-        this.innerHTML = '<p class="success-msg visible">Thank you! You\'re on the waitlist.<br>Check your email for confirmation.</p>';
-      }, 800);
+    waitlistForm.addEventListener('submit', function() {
+      gtag('event', 'waitlist_signup', {
+        'event_category': 'Form',
+        'event_label': 'Waitlist Submission'
+      });
     });
   }
 });
