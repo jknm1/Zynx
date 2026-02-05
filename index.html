@@ -33,7 +33,7 @@
     <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Corporation Logo" class="small-logo">
   </div>
 
-  <!-- Dark mode toggle button -->
+  <!-- Dark mode toggle -->
   <button id="theme-toggle" class="theme-btn">🌙</button>
 
   <!-- Floating Circular Navigation -->
@@ -57,25 +57,28 @@
       <p class="subtitle">Umbrella company building AI-powered platforms and next-generation digital infrastructure.</p>
       <p class="status">Currently under development • Early access for serious builders only</p>
 
-      <div class="waitlist-section fade-in">
-        <h2>Join the Zynx Waitlist</h2>
-        <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
-           Limited spots • Serious builders & early adopters only • No spam</p>
+      <!-- Waitlist form – now floating grey card style -->
+      <div class="waitlist-card fade-in">
+        <div class="waitlist-section">
+          <h2>Join the Zynx Waitlist</h2>
+          <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
+             Limited spots • Serious builders & early adopters only • No spam</p>
 
-        <form action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
-          <input type="email" name="email" placeholder="Enter your email" required>
-          <input type="text" name="name" placeholder="Your name (optional)">
-          <input type="hidden" name="_subject" value="New Zynx Waitlist Signup">
-          <input type="hidden" name="_gotcha" style="display:none">
+          <form action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="text" name="name" placeholder="Your name (optional)">
+            <input type="hidden" name="_subject" value="New Zynx Waitlist Signup">
+            <input type="hidden" name="_gotcha" style="display:none">
 
-          <button type="submit" class="btn large">Join Waitlist →</button>
-        </form>
+            <button type="submit" class="btn large">Join Waitlist →</button>
+          </form>
 
-        <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
+          <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
 
-        <div class="social-proof">
-          <p><strong>1,247</strong> builders already on the waitlist</p>
-          <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
+          <div class="social-proof">
+            <p><strong>1,247</strong> builders already on the waitlist</p>
+            <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
+          </div>
         </div>
       </div>
     </div>
@@ -146,35 +149,44 @@
       <a href="#home" class="btn large scroll-to-top">Back to Waitlist ↑</a>
       <p>No spam • Serious early adopters & builders only</p>
 
-      <section id="about" class="about fade-in">
-        <div class="container">
-          <h2>About Zynx Corporation</h2>
-          <p class="lead">
-            Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.
-          </p>
-          <p>
-            We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.
-          </p>
-          <p>
-            <strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.
-          </p>
-          <h3>Our Mission</h3>
-          <p>
-            To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.
-          </p>
-          <h3>What We Stand For</h3>
-          <ul class="values">
-            <li>Privacy by design — data stays under user control</li>
-            <li>Accessibility — powerful tools that don’t require deep technical knowledge</li>
-            <li>Local-first whenever possible — reduce dependency on cloud surveillance</li>
-            <li>Builder mindset — we create for people who want to create</li>
-            <li>Transparency — clear communication, no hidden black boxes</li>
-          </ul>
-          <div class="about-cta">
-            <a href="#home" class="btn large">Back to Top ↑</a>
+      <!-- About section – now floating grey card style -->
+      <div class="about-card fade-in">
+        <section id="about" class="about">
+          <div class="container">
+            <h2>About Zynx Corporation</h2>
+
+            <p class="lead">
+              Zynx Corporation is building the next generation of accessible, privacy-first AI platforms — tools that put control back in the hands of individuals and builders, without gatekeepers or unnecessary complexity.
+            </p>
+
+            <p>
+              We create specialized AI solutions that solve real-world problems in practical, everyday contexts — from quick local errands to global trading, personal knowledge management, and on-device code generation. Every platform is designed with simplicity, local-first execution, strong privacy protections, and real user benefit at the core.
+            </p>
+
+            <p>
+              <strong>Registered in the United States</strong> — we are establishing our legal entity in the U.S. to support global scalability, access to international infrastructure, and long-term growth while continuing to serve users worldwide from day one.
+            </p>
+
+            <h3>Our Mission</h3>
+            <p>
+              To make powerful AI infrastructure available to everyone — not just large organizations — by delivering ethical, scalable, and user-owned tools that work offline when needed and respect personal data boundaries.
+            </p>
+
+            <h3>What We Stand For</h3>
+            <ul class="values">
+              <li>Privacy by design — data stays under user control</li>
+              <li>Accessibility — powerful tools that don’t require deep technical knowledge</li>
+              <li>Local-first whenever possible — reduce dependency on cloud surveillance</li>
+              <li>Builder mindset — we create for people who want to create</li>
+              <li>Transparency — clear communication, no hidden black boxes</li>
+            </ul>
+
+            <div class="about-cta">
+              <a href="#home" class="btn large">Back to Top ↑</a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </section>
   </main>
 
