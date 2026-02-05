@@ -9,19 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // stop observing once visible
         }
       });
     },
     { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
   );
 
-  fadeElements.forEach((el) => observer.observe(el));
+  setTimeout(() => {
+    fadeElements.forEach((el) => observer.observe(el));
+  }, 300);
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
+
       const targetId = this.getAttribute("href");
       const targetElement = document.querySelector(targetId);
 
@@ -34,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Close circular nav after click
       const navToggle = document.getElementById("nav-toggle");
-      if (navToggle) navToggle.checked = false;
+      if (navToggle) {
+        navToggle.checked = false;
+      }
     });
   });
 
@@ -59,10 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-
-      // Small animation for background transition
-      document.body.style.transition = 'background 0.4s, color 0.4s';
-
+      
       if (document.body.classList.contains('dark')) {
         themeToggle.textContent = '☀️';
         localStorage.setItem('darkMode', 'enabled');
@@ -73,17 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Track waitlist form submissions in GA4
-  const waitlistForms = document.querySelectorAll('form');
-  waitlistForms.forEach(form => {
-    form.addEventListener('submit', () => {
-      const isWaitlist = form.classList.contains('waitlist-form');
-      const isFooter = form.classList.contains('mini-form');
-
-      gtag('event', isWaitlist ? 'waitlist_signup' : 'newsletter_signup', {
+  // Track waitlist signups in GA4
+  const waitlistForm = document.querySelector('.waitlist-form');
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', function() {
+      gtag('event', 'waitlist_signup', {
         'event_category': 'Form',
-        'event_label': isWaitlist ? 'Waitlist Submission' : 'Footer Newsletter Submission'
+        'event_label': 'Waitlist Submission'
       });
     });
-  });
+  }
 });
