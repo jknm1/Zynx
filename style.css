@@ -1,10 +1,14 @@
-/* style.css - Zynx Corporation – Fixed buttons + mobile safe */
+Here is the full css
+
+Here is my css update it so as even when using. A phone it’s will still be fine
+
+/* style.css - Zynx Corporation */
 
 :root {
   --bg: #ffffff;
   --text: #1e293b;
   --card-bg: #ffffff;
-  --float-bg: #f8fafc;
+  --float-bg: #f8fafc;          /* light grey for floating cards */
   --muted: #64748b;
   --border: #e2e8f0;
   --accent: #1d4ed8;
@@ -17,7 +21,7 @@ body.dark {
   --bg: #0f172a;
   --text: #e2e8f0;
   --card-bg: #1e293b;
-  --float-bg: #1e293b;
+  --float-bg: #1e293b;          /* darker grey in dark mode */
   --muted: #94a3b8;
   --border: #334155;
   --accent: #60a5fa;
@@ -33,20 +37,6 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   transition: background 0.4s ease, color 0.4s ease;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-/* Prevent text overflow on mobile – this fixes "Corporation" sticking out */
-h1, h2, h3, h4, h5, h6,
-.subtitle, .status, .card h3, .card p,
-.about-card p, .quote p, .milestone,
-.cta h2, .form-note, .social-proof p {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-  word-break: break-word;
-  max-width: 100%;
 }
 
 .container {
@@ -215,16 +205,14 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* ────────────── BUTTONS FIXED ────────────── */
-/* Smaller / closer to original sizing – no forced min-height */
 .btn {
   background: var(--accent);
   color: white;
-  padding: 0.9rem 2rem;                /* reduced padding */
+  padding: 1rem 2.5rem;
   border: none;
   border-radius: 0.75rem;
   font-weight: 600;
-  font-size: 1.05rem;                   /* slightly smaller font */
+  font-size: 1.125rem;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
@@ -238,8 +226,8 @@ h1 {
 }
 
 .btn.large {
-  font-size: 1.15rem;                   /* reduced from 1.25rem */
-  padding: 1rem 2.5rem;                 /* reduced from 1.25rem 3rem */
+  font-size: 1.25rem;
+  padding: 1.25rem 3rem;
 }
 
 .btn-disabled {
@@ -294,10 +282,7 @@ footer {
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
 }
-
-/* Rest of your original CSS unchanged – only mobile fixes added below */
 
 .footer-links {
   margin-top: 1.5rem;
@@ -578,7 +563,7 @@ a {
   text-decoration: none !important;
 }
 
-/* Responsive – mobile safe */
+/* Responsive */
 @media (max-width: 768px) {
   h1 { font-size: 3.5rem; }
   h2 { font-size: 2.25rem; }
@@ -592,14 +577,4 @@ a {
     padding: 2rem; 
     margin: 1.5rem 1rem; 
   }
-  .btn { font-size: 1rem; padding: 0.85rem 1.8rem; }
-  .btn.large { font-size: 1.1rem; padding: 1rem 2.2rem; }
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 2.8rem; }
-  h2 { font-size: 1.9rem; }
-  .container { padding: 0 1rem; }
-  .waitlist-card, .about-card { padding: 1.6rem; margin: 1.2rem 0.5rem; }
-  .btn { width: 100%; font-size: 0.95rem; padding: 0.9rem 1.5rem; }
 }
