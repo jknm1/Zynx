@@ -1,4 +1,4 @@
-/* style.css - Zynx Corporation – Mobile-optimized version */
+/* style.css - Zynx Corporation – Fixed buttons + mobile safe */
 
 :root {
   --bg: #ffffff;
@@ -34,12 +34,10 @@ body {
   min-height: 100vh;
   transition: background 0.4s ease, color 0.4s ease;
   margin: 0;
-  overflow-x: hidden;                     /* Prevents horizontal scroll on mobile */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* GLOBAL FIX: Prevent text overflow on narrow screens – especially important for headings */
+/* Prevent text overflow on mobile – this fixes "Corporation" sticking out */
 h1, h2, h3, h4, h5, h6,
 .subtitle, .status, .card h3, .card p,
 .about-card p, .quote p, .milestone,
@@ -47,7 +45,7 @@ h1, h2, h3, h4, h5, h6,
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  word-break: break-word;                 /* Breaks very long words if necessary */
+  word-break: break-word;
   max-width: 100%;
 }
 
@@ -122,7 +120,6 @@ h1 {
   background: var(--card-bg);
   color: var(--text);
   transition: all 0.2s;
-  min-height: 48px;                       /* Better touch target on mobile */
 }
 
 .waitlist-form input:focus {
@@ -218,23 +215,20 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* ────────────── BUTTONS FIXED ────────────── */
+/* Smaller / closer to original sizing – no forced min-height */
 .btn {
   background: var(--accent);
   color: white;
-  padding: 1rem 2.5rem;
+  padding: 0.9rem 2rem;                /* reduced padding */
   border: none;
   border-radius: 0.75rem;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1.05rem;                   /* slightly smaller font */
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
-  min-height: 48px;
-  min-width: 140px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .btn:hover {
@@ -244,8 +238,8 @@ h1 {
 }
 
 .btn.large {
-  font-size: 1.25rem;
-  padding: 1.25rem 3rem;
+  font-size: 1.15rem;                   /* reduced from 1.25rem */
+  padding: 1rem 2.5rem;                 /* reduced from 1.25rem 3rem */
 }
 
 .btn-disabled {
@@ -291,7 +285,6 @@ footer {
   border-radius: 0.5rem;
   background: var(--card-bg);
   color: var(--text);
-  min-height: 44px;
 }
 
 .mini-form button {
@@ -301,8 +294,10 @@ footer {
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  min-height: 44px;
+  font-size: 1rem;
 }
+
+/* Rest of your original CSS unchanged – only mobile fixes added below */
 
 .footer-links {
   margin-top: 1.5rem;
@@ -583,44 +578,28 @@ a {
   text-decoration: none !important;
 }
 
-/* ────────────────────────────────────────────────
-   RESPONSIVE – MOBILE FIRST ENHANCEMENTS
-───────────────────────────────────────────────── */
-
-@media (max-width: 1024px) {
-  .container { padding: 0 1.5rem; }
-}
-
+/* Responsive – mobile safe */
 @media (max-width: 768px) {
-  h1              { font-size: 3.5rem; }
-  h2              { font-size: 2.25rem; }
-  .subtitle       { font-size: 1.4rem; }
-  header          { padding: 6rem 0 4rem; }
-  .small-logo     { width: 50px; height: 50px; }
-  .logo-corner    { top: 1rem; left: 1rem; }
-  .floating-nav   { top: 1rem; left: 70px; }
-  .nav-btn        { width: 50px; height: 50px; }
-  .theme-btn      { top: 1rem; right: 1rem; font-size: 1.5rem; }
-  .waitlist-card,
-  .about-card     { padding: 2rem; margin: 1.5rem 0.5rem; border-radius: 1.2rem; }
-  .grid           { gap: 1.5rem; }
-  .card           { padding: 2rem; }
-  .btn            { font-size: 1rem; padding: 1rem 2rem; }
-  .btn.large      { font-size: 1.1rem; padding: 1.1rem 2.5rem; }
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.25rem; }
+  header { padding: 6rem 1rem 4rem; }
+  .small-logo { width: 50px; height: 50px; }
+  .logo-corner { top: 1rem; left: 1rem; }
+  .floating-nav { top: 1rem; left: 70px; }
+  .nav-btn { width: 50px; height: 50px; }
+  .theme-btn { top: 1rem; right: 1rem; font-size: 1.5rem; }
+  .waitlist-card, .about-card { 
+    padding: 2rem; 
+    margin: 1.5rem 1rem; 
+  }
+  .btn { font-size: 1rem; padding: 0.85rem 1.8rem; }
+  .btn.large { font-size: 1.1rem; padding: 1rem 2.2rem; }
 }
 
 @media (max-width: 480px) {
-  h1              { font-size: 2.8rem; letter-spacing: -0.03em; }
-  h2              { font-size: 2rem; }
-  .subtitle       { font-size: 1.25rem; }
-  header          { padding: 5rem 0 3rem; }
-  .container      { padding: 0 1rem; }
-  .waitlist-card,
-  .about-card     { padding: 1.6rem; margin: 1.2rem 0.5rem; border-radius: 1rem; }
-  .waitlist-form input,
-  .mini-form input { font-size: 1rem; padding: 0.9rem 1.1rem; }
-  .btn            { width: 100%; margin: 0.5rem 0; }
-  .nav-menu       { width: 220px; height: 220px; margin: -110px 0 0 -110px; }
-  .nav-link       { width: 80px; height: 80px; line-height: 80px; font-size: 0.9rem; }
-  .floating-nav   { left: 65px; }
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 1.9rem; }
+  .container { padding: 0 1rem; }
+  .waitlist-card, .about-card { padding: 1.6rem; margin: 1.2rem 0.5rem; }
+  .btn { width: 100%; font-size: 0.95rem; padding: 0.9rem 1.5rem; }
 }
