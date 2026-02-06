@@ -1,5 +1,6 @@
 // script.js - Zynx Corporation
 document.addEventListener("DOMContentLoaded", () => {
+
   // ===== Fade-in on scroll =====
   const fadeElements = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(
@@ -12,12 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   fadeElements.forEach(el => observer.observe(el));
 
-  // ===== Smooth scrolling for anchor links =====
+  // ===== Smooth scrolling for anchor links with offset =====
+  const offset = 100; // adjust based on floating nav height
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", e => {
       e.preventDefault();
       const target = document.querySelector(anchor.getAttribute("href"));
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (target) {
+        const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: topPos, behavior: "smooth" });
+      }
+      // Close nav toggle if open
       const navToggle = document.getElementById("nav-toggle");
       if (navToggle) navToggle.checked = false;
     });
@@ -56,10 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const successMsg = document.querySelector('.success-message');
   if (waitlistForm && successMsg) {
     waitlistForm.addEventListener('submit', e => {
-      e.preventDefault(); // prevent default to show success immediately
+      e.preventDefault();
       successMsg.style.display = 'block';
       waitlistForm.style.display = 'none';
-      // Send GA4 event
       if (typeof gtag === 'function') {
         gtag('event', 'waitlist_signup', {
           'event_category': 'Form',
@@ -114,16 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!msg) return;
       appendMessage(msg, 'user');
       supportInput.value = '';
-      // simple bot response
       setTimeout(() => appendMessage('Thanks for your message. A human agent will respond shortly.'), 600);
+    });
+
+    // also allow pressing Enter
+    supportInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        supportSend.click();
+      }
     });
   }
 
   if (supportHuman) {
     supportHuman.addEventListener('click', () => {
       appendMessage('Connecting you to a human support agent...', 'bot');
-      // optionally open mailto or chat link
       window.open('mailto:hello@zynxcorp.com?subject=Live%20Support%20Request', '_blank');
     });
   }
+
 });
