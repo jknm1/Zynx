@@ -10,11 +10,11 @@
     gtag('config', 'G-090Y6TW5JM');
   </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zynx Corporation</title>
 
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Zynx Corporation – Privacy-First AI Infrastructure">
   <meta property="og:description" content="Join the waitlist for early access to ErrandAI, AlphaTrade, World Forge & more. Limited spots.">
   <meta property="og:image" content="https://jknm1.github.io/Zynx/og-image.jpg">
@@ -28,28 +28,32 @@
 </head>
 <body>
 
-  <!-- Logo & Theme Toggle -->
+  <!-- Small logo -->
   <div class="logo-corner">
     <img src="https://raw.githubusercontent.com/jknm1/Zynx/refs/heads/main/IMG_2168.jpeg" alt="Zynx Logo" class="small-logo">
   </div>
+
+  <!-- Dark mode toggle -->
   <button id="theme-toggle" class="theme-btn">🌙</button>
 
-  <!-- Floating Navigation -->
+  <!-- Floating Circular Navigation -->
   <div class="floating-nav">
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-btn">
       <span class="nav-icon"></span>
     </label>
+
     <ul class="nav-menu">
-      <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-      <li class="nav-item"><a href="#platforms" class="nav-link">Platforms</a></li>
-      <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
-      <li class="nav-item"><a href="#" id="donate-menu" class="nav-link">Donate</a></li>
-      <li class="nav-item"><a href="#live-support" class="nav-link" id="live-support-menu">Live Support</a></li>
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#platforms" class="nav-link">Platforms</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
+      <li><a href="#" class="donate-link nav-link">Donate</a></li>
+      <li><button class="connect-live nav-link">Connect to Live Support</button></li>
     </ul>
   </div>
 
-  <!-- Header & Waitlist -->
+  <!-- Header / Waitlist -->
   <header id="home">
     <div class="container">
       <h1>Zynx Corporation</h1>
@@ -61,6 +65,7 @@
           <h2>Join the Zynx Waitlist</h2>
           <p>Get priority access to ErrandAI, AlphaTrade Global, World Forge, Nexara Forge & more.<br>
              Limited spots • Serious builders & early adopters only • No spam</p>
+
           <form action="https://formspree.io/f/mqelrneo" method="POST" class="waitlist-form">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="text" name="name" placeholder="Your name (optional)">
@@ -68,7 +73,9 @@
             <input type="hidden" name="_gotcha" style="display:none">
             <button type="submit" class="btn large">Join Waitlist →</button>
           </form>
+
           <p class="form-note">We'll send launch updates & exclusive early invites only.</p>
+
           <div class="social-proof">
             <p><strong>1,247</strong> builders already on the waitlist</p>
             <p><span class="pulse-dot"></span> +5 joined in the last hour</p>
@@ -78,8 +85,10 @@
     </div>
   </header>
 
-  <!-- Platforms -->
+  <!-- Main Content -->
   <main class="container">
+
+    <!-- Platforms -->
     <section id="platforms" class="platforms fade-in">
       <h2>Our AI Platforms</h2>
       <div class="grid">
@@ -89,21 +98,24 @@
           <span class="badge-live">Live (Alpha)</span>
           <a href="https://errandai.app/" target="_blank" class="btn">Visit ErrandAI →</a>
         </div>
+
         <div class="card fade-in">
           <h3>AlphaTrade Global</h3>
-          <p>AI-assisted global trading and investment platform built for smart execution and growth.</p>
+          <p>AI-assisted global trading and investment platform built for accessibility, smart execution, and capital growth.</p>
           <span class="badge-live">Live</span>
-          <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade →</a>
+          <a href="https://alphatradeglobal.live/" target="_blank" class="btn">Visit AlphaTrade Global →</a>
         </div>
+
         <div class="card fade-in">
           <h3>World Forge</h3>
-          <p>Your personal AI knowledge engine — offline-first for documents, notes, finances, and more.</p>
+          <p>Your personal, private intelligence engine — offline-first AI for documents, notes, news, finances and more.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
+
         <div class="card fade-in">
           <h3>Nexara Forge</h3>
-          <p>Cross-platform AI app that turns natural language into executable software instantly.</p>
+          <p>Cross-platform mobile app turning natural language prompts into instantly executable custom software on-device or in secure sandbox.</p>
           <span class="badge-dev">Under Development</span>
           <button class="btn btn-disabled">Coming Soon</button>
         </div>
@@ -116,7 +128,7 @@
       <div class="quote-grid">
         <div class="quote">
           <p>"Zynx is exactly what we've been waiting for — privacy-first AI without the Big Tech lock-in."</p>
-          <cite>— Nairobi-based developer (Alpha user)</cite>
+          <cite>— Nairobi-based developer</cite>
         </div>
         <div class="quote">
           <p>"The waitlist alone feels like being part of something big. Can't wait for ErrandAI."</p>
@@ -136,92 +148,50 @@
       </div>
     </section>
 
+    <!-- About -->
+    <section id="about" class="about fade-in">
+      <h2>About Zynx Corporation</h2>
+      <p class="lead">Zynx Corporation is building the next generation of accessible, privacy-first AI platforms...</p>
+      <ul class="values">
+        <li>Privacy by design</li>
+        <li>Accessibility for all</li>
+        <li>Local-first execution</li>
+        <li>Builder mindset</li>
+        <li>Transparency & clarity</li>
+      </ul>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="faq fade-in">
-      <h2>FAQ</h2>
+      <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
-        <button class="faq-question">What is Zynx Corporation?</button>
-        <p class="faq-answer">Zynx Corporation builds privacy-first AI platforms for global users.</p>
+        <p class="faq-question">What is Zynx Corporation?</p>
+        <p class="faq-answer">Zynx is an umbrella AI company creating platforms like ErrandAI and AlphaTrade.</p>
       </div>
       <div class="faq-item">
-        <button class="faq-question">How do I join a platform?</button>
-        <p class="faq-answer">Use the waitlist form on the homepage to get early access.</p>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Is there 24/7 support?</button>
-        <p class="faq-answer">Yes — we offer AI bot support and live agents when needed.</p>
+        <p class="faq-question">How do I join the waitlist?</p>
+        <p class="faq-answer">Submit your email in the waitlist form above to secure priority access.</p>
       </div>
     </section>
 
-    <!-- Live Support -->
-    <section id="live-support" class="live-support fade-in">
-      <h2>Live Support</h2>
-      <p>Chat with our bot or a live agent 24/7.</p>
-      <!-- Tawk.to widget -->
-      <div id="tawk-chat"></div>
-      <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/YOUR_TAWK_ID/default';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-      })();
-      </script>
-    </section>
-
-    <!-- Donation card -->
-    <div id="donation-card" class="hidden-card fade-in">
-      <h2>Support Zynx Corporation</h2>
-      <p>Your contribution helps maintain our AI platforms and community.</p>
-      <a href="https://paypal.me/YourLink" target="_blank" class="btn">Donate →</a>
-    </div>
-
-    <!-- About -->
-    <div class="about-card fade-in">
-      <section id="about" class="about">
-        <div class="container">
-          <h2>About Zynx Corporation</h2>
-          <p class="lead">
-            We create specialized AI solutions that solve real-world problems — from local errands to global trading and on-device code generation.
-          </p>
-          <ul class="values">
-            <li>Privacy by design — user data stays under your control</li>
-            <li>Accessibility — tools that don’t require deep tech knowledge</li>
-            <li>Local-first execution whenever possible</li>
-            <li>Builder mindset — we create for people who want to create</li>
-            <li>Transparency — no hidden black boxes</li>
-          </ul>
-          <div class="about-cta">
-            <a href="#home" class="btn large">Back to Top ↑</a>
-          </div>
-        </div>
-      </section>
+    <!-- Hidden Donation -->
+    <div class="hidden-card fade-in">
+      <h3>Support Zynx</h3>
+      <p>Your donations help us keep building innovative AI platforms.</p>
+      <button class="btn donate-now">Donate Now</button>
     </div>
 
   </main>
 
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     <p>© 2026 Zynx Corporation. All rights reserved.</p>
-    <p>Forging the future of AI-driven opportunity.</p>
     <div class="footer-signup fade-in">
       <p>Don't miss launch updates</p>
       <form action="https://formspree.io/f/mqelrneo" method="POST" class="mini-form">
         <input type="email" name="email" placeholder="Your email" required>
         <button type="submit">Subscribe</button>
       </form>
-    </div>
-    <div class="footer-links">
-      <a href="mailto:hello@zynxcorp.com" class="contact-item email-link">✉️ hello@zynxcorp.com</a>
-      <a href="https://www.instagram.com/zynx.corporation?igsh=c2RkaWtqa296aWhv&utm_source=qr" 
-         class="contact-item ig-link" target="_blank" rel="noopener noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" 
-             alt="Instagram" class="ig-logo">
-        Follow us on Instagram @zynx.corporation
-      </a>
     </div>
   </footer>
 
