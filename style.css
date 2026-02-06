@@ -1,3 +1,5 @@
+/* style.css - Zynx Corporation */
+
 /* ===== General Reset ===== */
 * {
   margin: 0;
@@ -31,7 +33,7 @@ a {
   padding: 2rem;
 }
 
-/* ===== Logo ===== */
+/* ===== Logo Corner ===== */
 .logo-corner {
   position: fixed;
   top: 10px;
@@ -220,6 +222,7 @@ body.dark .waitlist-card {
 
 .waitlist-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .waitlist-section h2 {
@@ -364,20 +367,6 @@ body.dark .card {
   cursor: not-allowed;
 }
 
-/* ===== Donation / Affiliate Sections ===== */
-.donate, .affiliate {
-  text-align: center;
-  padding: 2rem;
-  margin-top: 2rem;
-  background: #f5f5f5;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-body.dark .donate, body.dark .affiliate {
-  background: #1c1c1c;
-}
-
 /* ===== Testimonials ===== */
 .testimonials {
   margin-top: 3rem;
@@ -406,6 +395,7 @@ body.dark .quote {
   box-shadow: 0 5px 15px rgba(255,255,255,0.05);
 }
 
+/* Small circular avatar */
 .quote::before {
   content: '';
   width: 40px;
@@ -416,6 +406,7 @@ body.dark .quote {
   display: block;
 }
 
+/* Specific avatars for each quote */
 .quote:nth-child(1)::before {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
 }
@@ -434,29 +425,56 @@ body.dark .quote {
   color: #666;
 }
 
-/* ===== FAQ ===== */
-.faq {
+/* ===== Roadmap ===== */
+.roadmap {
   margin-top: 3rem;
 }
 
-.faq-item {
+.timeline {
+  border-left: 3px solid #111;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.milestone {
   margin-bottom: 1rem;
 }
 
-.faq-item h3 {
-  cursor: pointer;
-  background: #eee;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+/* ===== CTA ===== */
+.cta {
+  text-align: center;
+  margin: 3rem 0;
 }
 
-body.dark .faq-item h3 {
-  background: #222;
+.about-card {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  background: #f5f5f5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.faq-item p {
-  padding: 0.5rem 1rem;
-  display: none;
+body.dark .about-card {
+  background: #1c1c1c;
+}
+
+/* About section */
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about .lead {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.about .values {
+  margin-top: 1rem;
+  list-style: disc inside;
+}
+
+.about-cta {
+  margin-top: 1.5rem;
 }
 
 /* ===== Footer ===== */
@@ -472,7 +490,27 @@ footer a {
   color: #fff;
 }
 
-/* ===== Fade-In ===== */
+.footer-signup {
+  margin-top: 1rem;
+}
+
+.footer-signup input {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.footer-signup button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===== Fade-In Animation ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -484,97 +522,25 @@ footer a {
   transform: translateY(0);
 }
 
-/* ===== Live Support Widget ===== */
-#support-open {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  z-index: 9999;
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+/* ===== Scroll-To-Top Button ===== */
+.scroll-to-top {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #111;             /* Dark button color */
+  color: #fff;                  /* Text color */
+  padding: 0.75rem 1.5rem;      /* Bigger padding for a proper button feel */
+  border-radius: 25px;          /* Rounded pill shape */
   cursor: pointer;
-  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
-#live-support {
-  position: fixed;
-  bottom: 160px;
-  right: 30px;
-  width: 300px;
-  max-height: 400px;
-  background: #f5f5f5;
-  border-radius: 15px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 9999;
-}
-
-body.dark #live-support {
-  background: #1c1c1c;
-}
-
-.support-header {
-  background: #111;
-  color: #fff;
-  padding: 0.5rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.support-messages {
-  padding: 0.5rem;
-  flex: 1;
-  overflow-y: auto;
-}
-
-.support-messages div {
-  margin-bottom: 0.5rem;
-}
-
-.bot-message {
-  background: #eee;
-  padding: 0.5rem;
-  border-radius: 8px;
-}
-
-.user-message {
-  background: #111;
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 8px;
-  text-align: right;
-}
-
-#support-input {
-  padding: 0.5rem;
-  border: none;
-  width: calc(100% - 100px);
-}
-
-#support-send {
-  width: 50px;
-  border: none;
-  background: #4caf50;
-  color: #fff;
-  cursor: pointer;
-}
-
-#support-human {
-  background: #ff9800;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin: 0.5rem;
-  border-radius: 8px;
-  width: 90%;
+.scroll-to-top:hover {
+  background: #333;             /* Slightly lighter on hover */
+  transform: translateY(-3px);  /* Lift effect */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* ===== Media Queries ===== */
@@ -592,10 +558,13 @@ body.dark #live-support {
   .quote-grid {
     grid-template-columns: 1fr;
   }
-
-  #live-support {
-    width: 90%;
-    bottom: 120px;
-    right: 5%;
-  }
+}
+/* Footer Instagram Logo Fix */
+.footer-links .ig-logo {
+  width: 24px;        /* Make it small */
+  height: 24px;       /* Square to keep aspect ratio */
+  object-fit: cover;  /* Keep it proportional */
+  border-radius: 50%; /* Circle shape */
+  vertical-align: middle;
+  margin-right: 0.5rem; /* Space between icon and text */
 }
