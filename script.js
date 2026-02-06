@@ -1,123 +1,75 @@
-// script.js - Zynx Corporation
-
 document.addEventListener("DOMContentLoaded", () => {
+  // Fade-in observer
+  const fadeEls = document.querySelectorAll(".fade-in");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, {threshold: 0.15});
+  fadeEls.forEach(el => observer.observe(el));
 
-  /* ===== Fade-in on scroll ===== */
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
-  );
-
-  setTimeout(() => {
-    fadeElements.forEach(el => observer.observe(el));
-  }, 300);
-
-  /* ===== Smooth scrolling for anchor links ===== */
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener("click", e => {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Close circular nav after click
-      const navToggle = document.getElementById("nav-toggle");
-      if(navToggle) navToggle.checked = false;
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if(target) target.scrollIntoView({behavior: "smooth"});
+      document.getElementById("nav-toggle").checked = false;
     });
   });
 
-  /* ===== Close nav when clicking outside ===== */
-  document.addEventListener("click", (e) => {
-    const navContainer = document.querySelector(".floating-nav");
-    const navToggle = document.getElementById("nav-toggle");
-    if(navToggle && navToggle.checked && !navContainer.contains(e.target)) {
-      navToggle.checked = false;
+  // Dark mode toggle
+  const themeBtn = document.getElementById("theme-toggle");
+  if(localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️";
+  }
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if(document.body.classList.contains("dark")) {
+      localStorage.setItem("darkMode","enabled");
+      themeBtn.textContent = "☀️";
+    } else {
+      localStorage.setItem("darkMode","disabled");
+      themeBtn.textContent = "🌙";
     }
   });
 
-  /* ===== Dark mode toggle ===== */
-  const themeToggle = document.getElementById('theme-toggle');
-  if(themeToggle) {
-    if(localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark');
-      themeToggle.textContent = '☀️';
-    }
-
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      if(document.body.classList.contains('dark')) {
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('darkMode','enabled');
-      } else {
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('darkMode','disabled');
-      }
-    });
-  }
-
-  /* ===== Waitlist GA4 tracking ===== */
-  const waitlistForm = document.querySelector('.waitlist-form');
-  if(waitlistForm) {
-    waitlistForm.addEventListener('submit', function() {
-      if(typeof gtag === "function") {
-        gtag('event', 'waitlist_signup', {
-          'event_category': 'Form',
-          'event_label': 'Waitlist Submission'
-        });
-      }
-
-      // Show thank you message after submit
-      const thankYou = document.createElement('p');
-      thankYou.textContent = '✅ Thank you for joining the waitlist!';
-      thankYou.style.marginTop = '1rem';
-      waitlistForm.appendChild(thankYou);
-    });
-  }
-
-  /* ===== Scroll-to-top button ===== */
-  const scrollBtn = document.querySelector('.scroll-to-top');
-  if(scrollBtn) {
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  /* ===== FAQ toggle ===== */
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  faqQuestions.forEach(q => {
-    q.addEventListener('click', () => {
-      const answer = q.nextElementSibling;
-      const open = answer.style.display === 'block';
-      answer.style.display = open ? 'none' : 'block';
+  // FAQ toggle
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const answer = item.querySelector(".faq-answer");
+      if(answer) answer.style.display = answer.style.display === "block" ? "none" : "block";
     });
   });
 
-  /* ===== Donation card toggle ===== */
-  const donateLink = document.querySelector('.donate-link');
-  const donateCard = document.querySelector('.hidden-card');
-  if(donateLink && donateCard) {
-    donateLink.addEventListener('click', () => {
-      donateCard.style.display = donateCard.style.display === 'block' ? 'none' : 'block';
-      donateCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Show donation card
+  const donateLinks = document.querySelectorAll(".donate-link");
+  const hiddenCard = document.querySelector(".hidden-card");
+  donateLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      if(hiddenCard) hiddenCard.style.display = "block";
+      window.scrollTo({top: hiddenCard.offsetTop, behavior:"smooth"});
     });
-  }
+  });
 
-  /* ===== Live support connect ===== */
-  const liveBtn = document.querySelector('.connect-live');
+  // Live support button
+  const liveBtn = document.querySelector(".connect-live");
   if(liveBtn) {
-    liveBtn.addEventListener('click', () => {
-      // Example: open a chat widget or bot (replace with real chat link)
-      window.open('https://example.com/live-support', '_blank');
+    liveBtn.addEventListener("click", () => {
+      window.location.href = "mailto:support@zynxcorp.com"; // or replace with chat widget link
     });
   }
 
+  // GA4 waitlist tracking
+  const waitForm = document.querySelector(".waitlist-form");
+  if(waitForm) {
+    waitForm.addEventListener("submit", () => {
+      gtag('event', 'waitlist_signup', {
+        'event_category':'Form',
+        'event_label':'Waitlist Submission'
+      });
+    });
+  }
 });
