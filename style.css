@@ -603,9 +603,7 @@ body.dark .faq-item h3 {
 
 .faq-item p {
   padding: 0.5rem 1rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
+  display: none;
 }
 
 /* ===== Footer ===== */
