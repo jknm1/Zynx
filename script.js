@@ -139,3 +139,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+// ===== FAQ Toggle =====
+const faqItems = document.querySelectorAll('.faq-item h3');
+faqItems.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    if (content) {
+      // Toggle display
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+    }
+  });
+});
