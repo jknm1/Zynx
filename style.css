@@ -1,5 +1,3 @@
-/* style.css - Zynx Corporation */
-
 /* ===== General Reset ===== */
 * {
   margin: 0;
@@ -22,13 +20,11 @@ body.dark {
   color: #e0e0e0;
 }
 
-/* ===== Links ===== */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* ===== Container ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -159,26 +155,27 @@ body.dark .theme-btn {
   pointer-events: auto;
 }
 
-.nav-item {
+.nav-menu li {
   margin-bottom: 10px;
   transform: translateY(20px);
   transition: transform 0.3s ease-out;
 }
 
-.nav-toggle:checked ~ .nav-menu .nav-item {
+.nav-toggle:checked ~ .nav-menu li {
   transform: translateY(0);
 }
 
-.nav-link {
+.nav-link, .connect-live {
   background: #111;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 25px;
   transition: background 0.3s;
+  cursor: pointer;
 }
 
-.nav-link:hover {
-  background: #444;
+.nav-link:hover, .connect-live:hover {
+  background: #333;
 }
 
 /* ===== Header ===== */
@@ -212,7 +209,6 @@ header h1 {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
@@ -263,7 +259,7 @@ body.dark .waitlist-card {
   color: #666;
 }
 
-/* ===== Social proof ===== */
+/* Social proof */
 .social-proof {
   margin-top: 1rem;
   font-size: 0.85rem;
@@ -396,7 +392,7 @@ body.dark .quote {
   box-shadow: 0 5px 15px rgba(255,255,255,0.05);
 }
 
-/* Small circular avatar */
+/* Avatar circles */
 .quote::before {
   content: '';
   width: 40px;
@@ -407,7 +403,6 @@ body.dark .quote {
   display: block;
 }
 
-/* Specific avatars for each quote */
 .quote:nth-child(1)::before {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
 }
@@ -426,88 +421,72 @@ body.dark .quote {
   color: #666;
 }
 
+/* ===== Roadmap ===== */
+.roadmap {
+  margin-top: 3rem;
+}
+
+.timeline {
+  border-left: 3px solid #111;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.milestone {
+  margin-bottom: 1rem;
+}
+
+/* ===== About ===== */
+.about {
+  margin-top: 3rem;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about .lead {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.about .values {
+  list-style: disc inside;
+}
+
 /* ===== FAQ ===== */
+.faq {
+  margin-top: 3rem;
+}
+
 .faq-item {
   margin-bottom: 1rem;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  transition: border 0.3s;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #f5f5f5;
 }
 
 body.dark .faq-item {
-  border-color: #333;
-}
-
-.faq-question {
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  background: #eee;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-body.dark .faq-question {
-  background: #222;
-}
-
-.faq-question:hover {
-  background: #ddd;
+  background: #1c1c1c;
 }
 
 .faq-answer {
   display: none;
-  padding: 0.75rem 1rem;
-  background: #f9f9f9;
+  padding-top: 0.5rem;
   font-size: 0.85rem;
 }
 
-body.dark .faq-answer {
-  background: #1b1b1b;
-}
-
-/* ===== Live Support ===== */
-.live-support {
-  margin-top: 3rem;
-  padding: 1rem;
-  border-radius: 10px;
-  background: #f5f5f5;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-body.dark .live-support {
-  background: #1c1c1c;
-}
-
-/* ===== Donation Card ===== */
+/* ===== Hidden Donation ===== */
 .hidden-card {
   display: none;
-  margin: 2rem auto;
-  max-width: 400px;
+  background: #f5f5f5;
   padding: 1.5rem;
   border-radius: 15px;
-  background: #f5f5f5;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-top: 2rem;
 }
 
 body.dark .hidden-card {
-  background: #1c1c1c;
-}
-
-/* ===== About Card ===== */
-.about-card {
-  margin-top: 2rem;
-  padding: 2rem;
-  border-radius: 15px;
-  background: #f5f5f5;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-body.dark .about-card {
   background: #1c1c1c;
 }
 
@@ -520,22 +499,14 @@ footer {
   text-align: center;
 }
 
-footer a {
-  color: #fff;
-}
-
-.footer-signup {
-  margin-top: 1rem;
-}
-
-.footer-signup input {
+footer input {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: none;
   margin-right: 0.5rem;
 }
 
-.footer-signup button {
+footer button {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: none;
@@ -544,15 +515,7 @@ footer a {
   cursor: pointer;
 }
 
-/* Instagram Logo */
-.ig-logo {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-/* ===== Fade-In Animation ===== */
+/* ===== Fade-In ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -564,35 +527,9 @@ footer a {
   transform: translateY(0);
 }
 
-/* ===== Scroll-To-Top Button ===== */
-.scroll-to-top {
-  display: inline-block;
-  margin-top: 1rem;
-  background: #111;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.scroll-to-top:hover {
-  background: #333;
-}
-
 /* ===== Media Queries ===== */
 @media (max-width: 768px) {
-  .floating-nav {
-    bottom: 20px;
-    right: 20px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  .platforms .grid,
-  .quote-grid {
-    grid-template-columns: 1fr;
-  }
+  header h1 { font-size: 2rem; }
+  .platforms .grid, .quote-grid { grid-template-columns: 1fr; }
+  .floating-nav { bottom: 20px; right: 20px; }
 }
