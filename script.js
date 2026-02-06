@@ -124,5 +124,55 @@ document.addEventListener("DOMContentLoaded", () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
+ // ===== FAQ toggle =====
+  document.querySelectorAll('.faq-item h3').forEach(faq => {
+    faq.addEventListener('click', ()=>{
+      const p = faq.nextElementSibling;
+      if(p.style.display==='block'){
+        p.style.display='none';
+      } else {
+        p.style.display='block';
+      }
+    });
+  
 
+  // ===== Live support =====
+  const supportOpen = document.getElementById('support-open');
+  const liveSupport = document.getElementById('live-support');
+  const supportClose = document.getElementById('support-close');
+  const supportSend = document.getElementById('support-send');
+  const supportInput = document.getElementById('support-input');
+  const supportMessages = document.getElementById('support-messages');
+  const supportHuman = document.getElementById('support-human');
+
+  supportOpen.addEventListener('click', ()=> liveSupport.style.display='flex');
+  supportClose.addEventListener('click', ()=> liveSupport.style.display='none');
+
+  supportSend.addEventListener('click', ()=>{
+    if(supportInput.value.trim()==='') return;
+    const userMsg = document.createElement('div');
+    userMsg.className='user-message';
+    userMsg.textContent=supportInput.value;
+    supportMessages.appendChild(userMsg);
+    supportInput.value='';
+    supportMessages.scrollTop = supportMessages.scrollHeight;
+
+    setTimeout(()=>{
+      const botMsg = document.createElement('div');
+      botMsg.className='bot-message';
+      botMsg.textContent='Thank you for your message. A human agent will assist shortly.';
+      supportMessages.appendChild(botMsg);
+      supportMessages.scrollTop = supportMessages.scrollHeight;
+    },1000);
+  });
+
+  supportHuman.addEventListener('click', ()=>{
+    const botMsg = document.createElement('div');
+    botMsg.className='bot-message';
+    botMsg.textContent='Connecting you to a human agent...';
+    supportMessages.appendChild(botMsg);
+    supportMessages.scrollTop = supportMessages.scrollHeight;
+  });
+
+});
 });
