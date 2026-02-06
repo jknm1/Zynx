@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fadeElements.forEach(el => observer.observe(el));
 
   // ===== Smooth scrolling for anchor links with offset =====
-  const offset = 100; // adjust based on floating nav height
+  const offset = 100; 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", e => {
       e.preventDefault();
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: topPos, behavior: "smooth" });
       }
-      // Close nav toggle if open
       const navToggle = document.getElementById("nav-toggle");
       if (navToggle) navToggle.checked = false;
     });
@@ -122,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => appendMessage('Thanks for your message. A human agent will respond shortly.'), 600);
     });
 
-    // also allow pressing Enter
     supportInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -138,19 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-});
-// ===== FAQ Toggle =====
-const faqItems = document.querySelectorAll('.faq-item h3');
-faqItems.forEach(header => {
-  header.addEventListener('click', () => {
-    const content = header.nextElementSibling;
-    if (content) {
-      // Toggle display
-      if (content.style.display === 'block') {
-        content.style.display = 'none';
-      } else {
-        content.style.display = 'block';
+  // ===== FAQ Toggle with smooth animation =====
+  const faqItems = document.querySelectorAll('.faq-item h3');
+  faqItems.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      if (content) {
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
       }
-    }
+    });
   });
+
 });
