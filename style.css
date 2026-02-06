@@ -526,16 +526,21 @@ footer a {
 .scroll-to-top {
   display: inline-block;
   margin-top: 1rem;
-  background: #111;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  background: #111;             /* Dark button color */
+  color: #fff;                  /* Text color */
+  padding: 0.75rem 1.5rem;      /* Bigger padding for a proper button feel */
+  border-radius: 25px;          /* Rounded pill shape */
   cursor: pointer;
-  transition: background 0.3s;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .scroll-to-top:hover {
-  background: #333;
+  background: #333;             /* Slightly lighter on hover */
+  transform: translateY(-3px);  /* Lift effect */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* ===== Media Queries ===== */
