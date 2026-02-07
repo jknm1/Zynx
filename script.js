@@ -1,4 +1,3 @@
-// script.js - Zynx Corporation
 document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Fade-in on scroll =====
@@ -13,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   fadeElements.forEach(el => observer.observe(el));
 
-  // ===== Smooth scrolling for anchor links with offset =====
-  const offset = 100; // adjust based on floating nav height
+  // ===== Smooth scrolling for anchor links =====
+  const offset = 100;
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", e => {
       e.preventDefault();
@@ -23,13 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: topPos, behavior: "smooth" });
       }
-      // Close nav toggle if open
       const navToggle = document.getElementById("nav-toggle");
       if (navToggle) navToggle.checked = false;
     });
   });
 
-  // ===== Close nav on clicking outside =====
+  // ===== Close nav on outside click =====
   document.addEventListener("click", e => {
     const navContainer = document.querySelector(".floating-nav");
     const navToggle = document.getElementById("nav-toggle");
@@ -57,24 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== Waitlist success message =====
+  // ===== Waitlist form success =====
   const waitlistForm = document.querySelector('.waitlist-form');
-  const waitlistSuccess = document.querySelector('.success-message');
-  if (waitlistForm && waitlistSuccess) {
+  const successMsg = document.querySelector('.success-message');
+  if (waitlistForm && successMsg) {
     waitlistForm.addEventListener('submit', e => {
       e.preventDefault();
-
-      // Show success message with fade
-      waitlistSuccess.style.display = 'block';
-      waitlistSuccess.style.opacity = 0;
+      successMsg.style.display = 'block';
       waitlistForm.style.display = 'none';
-      let op = 0;
-      const fadeIn = setInterval(() => {
-        if (op >= 1) clearInterval(fadeIn);
-        waitlistSuccess.style.opacity = op;
-        op += 0.05;
-      }, 15);
-
       if (typeof gtag === 'function') {
         gtag('event', 'waitlist_signup', {
           'event_category': 'Form',
@@ -85,17 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Affiliate form AJAX submission =====
-  const affiliateForm = document.getElementById('affiliate-form');
+  const affiliateForm = document.getElementById('affiliate-form-form');
   const affiliateSuccess = document.getElementById('affiliate-success');
 
   if (affiliateForm && affiliateSuccess) {
     affiliateForm.addEventListener('submit', function (e) {
-      e.preventDefault(); // Prevent page reload
-
-      // Gather form data
+      e.preventDefault(); // prevent reload
       const formData = new FormData(affiliateForm);
-
-      // Send using fetch (AJAX)
       fetch(affiliateForm.action, {
         method: 'POST',
         body: formData,
@@ -103,19 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(response => {
         if (response.ok) {
-          // Hide form
           affiliateForm.style.display = 'none';
-
-          // Show success with smooth fade-in
           affiliateSuccess.style.display = 'block';
-          affiliateSuccess.style.opacity = 0;
-          let op = 0;
-          const fadeIn = setInterval(() => {
-            if (op >= 1) clearInterval(fadeIn);
-            affiliateSuccess.style.opacity = op;
-            op += 0.05;
-          }, 15);
-
         } else {
           response.json().then(data => {
             alert(data.error || 'Submission failed. Try again.');
@@ -175,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       supportInput.value = '';
       setTimeout(() => appendMessage('Thanks for your message. A human agent will respond shortly.'), 600);
     });
-
-    // Press Enter to send
-    supportInput.addEventListener('keypress', (e) => {
+    supportInput.addEventListener('keypress', e => {
       if (e.key === 'Enter') {
         e.preventDefault();
         supportSend.click();
@@ -197,9 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   faqItems.forEach(header => {
     header.addEventListener('click', () => {
       const content = header.nextElementSibling;
-      if (content) {
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
-      }
+      if (content) content.style.display = content.style.display === 'block' ? 'none' : 'block';
     });
   });
 
