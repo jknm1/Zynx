@@ -179,48 +179,73 @@ affiliateForm.addEventListener('submit', function(e) {
   });
 
 });
-// ===== Live Market Prices =====
+// ===== Live Market Prices (Safe for GitHub Pages) =====
 async function loadMarkets() {
   const grid = document.getElementById('market-grid');
   if (!grid) return;
 
-  const API_KEY = 'YOUR_FINNHUB_API_KEY';
-  const symbols = [
-    { name: 'Apple', symbol: 'AAPL' },
-    { name: 'Tesla', symbol: 'TSLA' },
-    { name: 'Gold', symbol: 'XAUUSD' },
-    { name: 'Bitcoin', symbol: 'BTCUSDT' }
-  ];
-
   grid.innerHTML = '';
 
-  for (let item of symbols) {
-    try {
-      const res = await fetch(
-        `https://finnhub.io/api/v1/quote?symbol=${item.symbol}&token=${API_KEY}`
-      );
-      const data = await res.json();
+  try {
+    // Apple
+    const appleRes = await fetch(
+      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=demo'
+    );
+    const appleData = await appleRes.json();
+    renderMarket(
+      'Apple',
+      appleData['Global Quote']['05. price'],
+      appleData['Global Quote']['09. change']
+    );
 
-      const changeClass = data.d >= 0 ? 'market-up' : 'market-down';
+    // Tesla
+    const teslaRes = await fetch(
+      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=demo'
+    );
+    const teslaData = await teslaRes.json();
+    renderMarket(
+      'Tesla',
+      teslaData['Global Quote']['05. price'],
+      teslaData['Global Quote']['09. change']
+    );
 
-      grid.innerHTML += `
-        <div class="market-card">
-          <div class="market-symbol">${item.name}</div>
-          <div class="market-price ${changeClass}">
-            $${data.c}
-          </div>
-          <div class="${changeClass}">
-            ${data.d >= 0 ? '+' : ''}${data.d}
-          </div>
-        </div>
-      `;
-    } catch (err) {
-      grid.innerHTML += `<div class="market-card">Error loading data</div>`;
-    }
+    // Bitcoin
+    const btcRes = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true'
+    );
+    const btcData = await btcRes.json();
+    renderMarket(
+      'Bitcoin',
+      btcData.bitcoin.usd,
+      btcData.bitcoin.usd_24h_change.toFixed(2)
+    );
+
+    // Gold (static reference price – stable)
+    renderMarket('Gold', '2035.00', '+0.40');
+
+  } catch (err) {
+    grid.innerHTML = '<div class="market-card">Unable to load data</div>';
   }
 }
 
-// Load on page open
+function renderMarket(name, price, change) {
+  const grid = document.getElementById('market-grid');
+  const changeClass = parseFloat(change) >= 0 ? 'market-up' : 'market-down';
+
+  grid.innerHTML += `
+    <div class="market-card">
+      <div class="market-symbol">${name}</div>
+      <div class="market-price ${changeClass}">
+        $${price}
+      </div>
+      <div class="${changeClass}">
+        ${change}
+      </div>
+    </div>
+  `;
+}
+
+// Initial load
 loadMarkets();
 
 // Refresh every 60 seconds
