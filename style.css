@@ -379,7 +379,46 @@ body.dark .card {
 body.dark .donate, body.dark .affiliate {
   background: #1c1c1c;
 }
+/* ===== Affiliate Form ===== */
+.affiliate .lead {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
 
+.affiliate-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.affiliate-form input,
+.affiliate-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+body.dark .affiliate-form input,
+body.dark .affiliate-form textarea {
+  background: #111;
+  color: #fff;
+  border-color: #333;
+}
+
+.affiliate-check {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.affiliate-success {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #4caf50;
+  text-align: center;
+}
 /* ===== Testimonials ===== */
 .testimonials {
   margin-top: 3rem;
