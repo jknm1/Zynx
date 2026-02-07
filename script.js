@@ -179,65 +179,49 @@ affiliateForm.addEventListener('submit', function(e) {
   });
 
 });
-/* ===== STOCK MARKET (STOCKS ONLY - SAFE VERSION) ===== */
+// ===== Live Market Prices =====
+async function loadMarkets() {
+  const grid = document.getElementById('market-grid');
+  if (!grid) return;
 
-const STOCK_API_KEY = "S3BGOJVZNPPPXHCF";
-let stockCooldown = false;
+  const API_KEY = "S3BGOJVZNPPPXHCF";
+  const symbols = [
+    { name: 'Apple', symbol: 'AAPL' },
+    { name: 'Tesla', symbol: 'TSLA' },
+    { name: 'Gold', symbol: 'XAUUSD' },
+    { name: 'Bitcoin', symbol: 'BTCUSDT' }
+  ];
 
-async function loadStock(symbol, priceId, changeId) {
-  if (stockCooldown) return;
+  grid.innerHTML = '';
 
-  try {
-    const res = await fetch(
-      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${STOCK_API_KEY}`
-    );
+  for (let item of symbols) {
+    try {
+      const res = await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${item.symbol}&token=${API_KEY}`
+      );
+      const data = await res.json();
 
-    const data = await res.json();
+      const changeClass = data.d >= 0 ? 'market-up' : 'market-down';
 
-    // 🚫 Rate limit or API notice
-    if (data.Note || data.Information) {
-      document.getElementById(priceId).textContent = "Rate limit reached";
-      document.getElementById(changeId).textContent = "Try again later";
-
-      // prevent hammering API
-      stockCooldown = true;
-      setTimeout(() => (stockCooldown = false), 120000);
-      return;
+      grid.innerHTML += `
+        <div class="market-card">
+          <div class="market-symbol">${item.name}</div>
+          <div class="market-price ${changeClass}">
+            $${data.c}
+          </div>
+          <div class="${changeClass}">
+            ${data.d >= 0 ? '+' : ''}${data.d}
+          </div>
+        </div>
+      `;
+    } catch (err) {
+      grid.innerHTML += `<div class="market-card">Error loading data</div>`;
     }
-
-    const quote = data["Global Quote"];
-    if (!quote || !quote["05. price"]) {
-      document.getElementById(priceId).textContent = "Unavailable";
-      document.getElementById(changeId).textContent = "";
-      return;
-    }
-
-    const price = parseFloat(quote["05. price"]).toFixed(2);
-    const change = quote["10. change percent"];
-
-    const priceEl = document.getElementById(priceId);
-    const changeEl = document.getElementById(changeId);
-
-    priceEl.textContent = `$${price}`;
-    changeEl.textContent = change;
-
-    changeEl.className = change.startsWith("-")
-      ? "negative"
-      : "positive";
-
-  } catch (e) {
-    document.getElementById(priceId).textContent = "Network error";
-    document.getElementById(changeId).textContent = "";
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadStock("AAPL", "aapl-price", "aapl-change");
-  loadStock("TSLA", "tsla-price", "tsla-change");
+// Load on page open
+loadMarkets();
 
-  // refresh every 2 minutes (SAFE)
-  setInterval(() => {
-    loadStock("AAPL", "aapl-price", "aapl-change");
-    loadStock("TSLA", "tsla-price", "tsla-change");
-  }, 120000);
-});
+// Refresh every 60 seconds
+setInterval(loadMarkets, 60000);
