@@ -94,6 +94,38 @@ if (affiliateForm && affiliateSuccess) {
     });
   });
 }
+// ===== Affiliate form AJAX submission =====
+const affiliateForm = document.getElementById('affiliateForm');
+const affiliateSuccess = document.getElementById('affiliate-success');
+
+if (affiliateForm && affiliateSuccess) {
+  affiliateForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // ✅ Prevent page reload
+
+    // Gather form data
+    const formData = new FormData(affiliateForm);
+
+    // Send using fetch (AJAX)
+    fetch('https://formspree.io/f/mqelrneo', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        affiliateForm.style.display = 'none';       // Hide form
+        affiliateSuccess.style.display = 'block';   // Show success message
+      } else {
+        response.json().then(data => {
+          alert(data.error || 'Submission failed. Try again.');
+        });
+      }
+    })
+    .catch(() => {
+      alert('Network error. Please try again.');
+    });
+  });
+}  
   // ===== Scroll-to-top buttons =====
   document.querySelectorAll('.scroll-to-top').forEach(btn => {
     btn.addEventListener('click', e => {
