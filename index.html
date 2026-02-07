@@ -45,6 +45,9 @@
     </label>
 
     <ul class="nav-menu">
+      <li class="nav-item">
+  <a href="#markets" class="nav-link">Stock Prices</a>
+</li>
       <li class="nav-item" style="--i:0"><a href="#home" class="nav-link">Home</a></li>
       <li class="nav-item" style="--i:1"><a href="#platforms" class="nav-link">Platforms</a></li>
       <li class="nav-item" style="--i:2"><a href="#about" class="nav-link">About</a></li>
@@ -161,7 +164,20 @@
   </form>
 </section>
     
-    
+    <section id="markets" class="markets fade-in container">
+  <h2>Live Market Prices</h2>
+  <p class="lead">
+    Real-time snapshots of global markets, updated automatically.
+  </p>
+
+  <div class="market-grid" id="market-grid">
+    <div class="market-card">Loading market data...</div>
+  </div>
+
+  <p class="market-note">
+    Data updates every 60 seconds.
+  </p>
+</section>
     <section class="testimonials fade-in">
       <h2>What Early Builders Say</h2>
       <div class="quote-grid">
