@@ -73,24 +73,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-// ===== Affiliate Form =====
-const affiliateForm = document.querySelector('.affiliate-form');
-const affiliateSuccess = document.querySelector('.affiliate-success');
+// ===== Affiliate form success handling =====
+const affiliateForm = document.getElementById('affiliateForm');
+const affiliateSuccess = document.getElementById('affiliate-success');
 
 if (affiliateForm && affiliateSuccess) {
-  affiliateForm.addEventListener('submit', e => {
+  affiliateForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    affiliateForm.style.display = 'none';
-    affiliateSuccess.style.display = 'block';
-
-    // Optional analytics hook
-    if (typeof gtag === 'function') {
-      gtag('event', 'affiliate_application', {
-        event_category: 'Affiliate',
-        event_label: 'Application Submitted'
-      });
-    }
+    // Send form to Formspree
+    fetch(affiliateForm.action, {
+      method: 'POST',
+      body: new FormData(affiliateForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(() => {
+      affiliateForm.style.display = 'none';
+      affiliateSuccess.style.display = 'block';
+    }).catch(() => {
+      alert('Something went wrong. Please try again.');
+    });
   });
 }
   // ===== Scroll-to-top buttons =====
