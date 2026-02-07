@@ -73,7 +73,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+// ===== Affiliate Form =====
+const affiliateForm = document.querySelector('.affiliate-form');
+const affiliateSuccess = document.querySelector('.affiliate-success');
 
+if (affiliateForm && affiliateSuccess) {
+  affiliateForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    affiliateForm.style.display = 'none';
+    affiliateSuccess.style.display = 'block';
+
+    // Optional analytics hook
+    if (typeof gtag === 'function') {
+      gtag('event', 'affiliate_application', {
+        event_category: 'Affiliate',
+        event_label: 'Application Submitted'
+      });
+    }
+  });
+}
   // ===== Scroll-to-top buttons =====
   document.querySelectorAll('.scroll-to-top').forEach(btn => {
     btn.addEventListener('click', e => {
