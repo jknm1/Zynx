@@ -59,12 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Waitlist success message =====
   const waitlistForm = document.querySelector('.waitlist-form');
-  const successMsg = document.querySelector('.success-message');
-  if (waitlistForm && successMsg) {
+  const waitlistSuccess = document.querySelector('.success-message');
+  if (waitlistForm && waitlistSuccess) {
     waitlistForm.addEventListener('submit', e => {
       e.preventDefault();
-      successMsg.style.display = 'block';
+
+      // Show success message with fade
+      waitlistSuccess.style.display = 'block';
+      waitlistSuccess.style.opacity = 0;
       waitlistForm.style.display = 'none';
+      let op = 0;
+      const fadeIn = setInterval(() => {
+        if (op >= 1) clearInterval(fadeIn);
+        waitlistSuccess.style.opacity = op;
+        op += 0.05;
+      }, 15);
+
       if (typeof gtag === 'function') {
         gtag('event', 'waitlist_signup', {
           'event_category': 'Form',
@@ -73,59 +83,51 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-// ===== Affiliate form success handling =====
-const affiliateForm = document.getElementById('affiliateForm');
-const affiliateSuccess = document.getElementById('affiliate-success');
 
-if (affiliateForm && affiliateSuccess) {
-  affiliateForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+  // ===== Affiliate form AJAX submission =====
+  const affiliateForm = document.getElementById('affiliate-form');
+  const affiliateSuccess = document.getElementById('affiliate-success');
 
-    // Send form to Formspree
-    fetch(affiliateForm.action, {
-      method: 'POST',
-      body: new FormData(affiliateForm),
-      headers: { 'Accept': 'application/json' }
-    }).then(() => {
-      affiliateForm.style.display = 'none';
-      affiliateSuccess.style.display = 'block';
-    }).catch(() => {
-      alert('Something went wrong. Please try again.');
+  if (affiliateForm && affiliateSuccess) {
+    affiliateForm.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent page reload
+
+      // Gather form data
+      const formData = new FormData(affiliateForm);
+
+      // Send using fetch (AJAX)
+      fetch(affiliateForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Hide form
+          affiliateForm.style.display = 'none';
+
+          // Show success with smooth fade-in
+          affiliateSuccess.style.display = 'block';
+          affiliateSuccess.style.opacity = 0;
+          let op = 0;
+          const fadeIn = setInterval(() => {
+            if (op >= 1) clearInterval(fadeIn);
+            affiliateSuccess.style.opacity = op;
+            op += 0.05;
+          }, 15);
+
+        } else {
+          response.json().then(data => {
+            alert(data.error || 'Submission failed. Try again.');
+          });
+        }
+      })
+      .catch(() => {
+        alert('Network error. Please try again.');
+      });
     });
-  });
-}
-// ===== Affiliate form AJAX submission =====
-const affiliateForm = document.getElementById('affiliateForm');
-const affiliateSuccess = document.getElementById('affiliate-success');
+  }
 
-if (affiliateForm && affiliateSuccess) {
-  affiliateForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // ✅ Prevent page reload
-
-    // Gather form data
-    const formData = new FormData(affiliateForm);
-
-    // Send using fetch (AJAX)
-    fetch('https://formspree.io/f/mqelrneo', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        affiliateForm.style.display = 'none';       // Hide form
-        affiliateSuccess.style.display = 'block';   // Show success message
-      } else {
-        response.json().then(data => {
-          alert(data.error || 'Submission failed. Try again.');
-        });
-      }
-    })
-    .catch(() => {
-      alert('Network error. Please try again.');
-    });
-  });
-}  
   // ===== Scroll-to-top buttons =====
   document.querySelectorAll('.scroll-to-top').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -174,7 +176,7 @@ if (affiliateForm && affiliateSuccess) {
       setTimeout(() => appendMessage('Thanks for your message. A human agent will respond shortly.'), 600);
     });
 
-    // also allow pressing Enter
+    // Press Enter to send
     supportInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -196,12 +198,7 @@ if (affiliateForm && affiliateSuccess) {
     header.addEventListener('click', () => {
       const content = header.nextElementSibling;
       if (content) {
-        // Toggle display
-        if (content.style.display === 'block') {
-          content.style.display = 'none';
-        } else {
-          content.style.display = 'block';
-        }
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
       }
     });
   });
