@@ -179,74 +179,50 @@ affiliateForm.addEventListener('submit', function(e) {
   });
 
 });
-// ===== Live Market Prices (Safe for GitHub Pages) =====
-async function loadMarkets() {
-  const grid = document.getElementById('market-grid');
-  if (!grid) return;
+/* ===== STOCK MARKET (STOCKS ONLY) ===== */
 
-  grid.innerHTML = '';
+const STOCK_API_KEY = "S3BGOJVZNPPPXHCF";
 
+// Generic stock loader
+async function loadStock(symbol, priceId, changeId) {
   try {
-    // Apple
-    const appleRes = await fetch(
-      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=demo'
-    );
-    const appleData = await appleRes.json();
-    renderMarket(
-      'Apple',
-      appleData['Global Quote']['05. price'],
-      appleData['Global Quote']['09. change']
+    const response = await fetch(
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${STOCK_API_KEY}`
     );
 
-    // Tesla
-    const teslaRes = await fetch(
-      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=demo'
-    );
-    const teslaData = await teslaRes.json();
-    renderMarket(
-      'Tesla',
-      teslaData['Global Quote']['05. price'],
-      teslaData['Global Quote']['09. change']
-    );
+    const data = await response.json();
+    const quote = data["Global Quote"];
 
-    // Bitcoin
-    const btcRes = await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true'
-    );
-    const btcData = await btcRes.json();
-    renderMarket(
-      'Bitcoin',
-      btcData.bitcoin.usd,
-      btcData.bitcoin.usd_24h_change.toFixed(2)
-    );
+    if (!quote || !quote["05. price"]) {
+      document.getElementById(priceId).textContent = "N/A";
+      return;
+    }
 
-    // Gold (static reference price – stable)
-    renderMarket('Gold', '2035.00', '+0.40');
+    const price = parseFloat(quote["05. price"]).toFixed(2);
+    const change = quote["10. change percent"];
+
+    const priceEl = document.getElementById(priceId);
+    const changeEl = document.getElementById(changeId);
+
+    priceEl.textContent = `$${price}`;
+    changeEl.textContent = change;
+
+    changeEl.classList.remove("positive", "negative");
+    changeEl.classList.add(change.startsWith("-") ? "negative" : "positive");
 
   } catch (err) {
-    grid.innerHTML = '<div class="market-card">Unable to load data</div>';
+    document.getElementById(priceId).textContent = "Error";
   }
 }
 
-function renderMarket(name, price, change) {
-  const grid = document.getElementById('market-grid');
-  const changeClass = parseFloat(change) >= 0 ? 'market-up' : 'market-down';
+// Load stocks on page load
+document.addEventListener("DOMContentLoaded", () => {
+  loadStock("AAPL", "aapl-price", "aapl-change");
+  loadStock("TSLA", "tsla-price", "tsla-change");
 
-  grid.innerHTML += `
-    <div class="market-card">
-      <div class="market-symbol">${name}</div>
-      <div class="market-price ${changeClass}">
-        $${price}
-      </div>
-      <div class="${changeClass}">
-        ${change}
-      </div>
-    </div>
-  `;
-}
-
-// Initial load
-loadMarkets();
-
-// Refresh every 60 seconds
-setInterval(loadMarkets, 60000);
+  // Auto refresh every 60 seconds
+  setInterval(() => {
+    loadStock("AAPL", "aapl-price", "aapl-change");
+    loadStock("TSLA", "tsla-price", "tsla-change");
+  }, 60000);
+});
