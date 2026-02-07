@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== Affiliate form AJAX submission =====
+/ ===== Affiliate form AJAX submission =====
   const affiliateForm = document.getElementById('affiliate-form-form');
   const affiliateSuccess = document.getElementById('affiliate-success');
 
