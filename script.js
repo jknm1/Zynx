@@ -72,34 +72,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-/ ===== Affiliate form AJAX submission =====
-  const affiliateForm = document.getElementById('affiliate-form-form');
-  const affiliateSuccess = document.getElementById('affiliate-success');
+// AJAX submission for Affiliate Form
+const affiliateForm = document.querySelector('#affiliate-form form');
 
-  if (affiliateForm && affiliateSuccess) {
-    affiliateForm.addEventListener('submit', function (e) {
-      e.preventDefault(); // prevent reload
-      const formData = new FormData(affiliateForm);
-      fetch(affiliateForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(response => {
-        if (response.ok) {
-          affiliateForm.style.display = 'none';
-          affiliateSuccess.style.display = 'block';
-        } else {
-          response.json().then(data => {
-            alert(data.error || 'Submission failed. Try again.');
-          });
-        }
-      })
-      .catch(() => {
-        alert('Network error. Please try again.');
+affiliateForm.addEventListener('submit', function(e) {
+  e.preventDefault(); // Stop page reload
+
+  const formData = new FormData(affiliateForm);
+
+  fetch(affiliateForm.action, {
+    method: affiliateForm.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Hide the form
+      affiliateForm.style.display = 'none';
+
+      // Show the success message
+      const successMessage = document.querySelector('#affiliate-success');
+      if (successMessage) {
+        successMessage.style.display = 'block';
+      }
+    } else {
+      response.json().then(data => {
+        alert(data.error || 'Submission failed. Try again.');
       });
-    });
-  }
+    }
+  })
+  .catch(error => {
+    console.error('Error!', error);
+    alert('Network error. Try again.');
+  });
+});
 
   // ===== Scroll-to-top buttons =====
   document.querySelectorAll('.scroll-to-top').forEach(btn => {
