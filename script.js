@@ -179,22 +179,36 @@ affiliateForm.addEventListener('submit', function(e) {
   });
 
 });
-/* ===== STOCK MARKET (STOCKS ONLY) ===== */
+/* ===== STOCK MARKET (STOCKS ONLY - SAFE VERSION) ===== */
 
 const STOCK_API_KEY = "S3BGOJVZNPPPXHCF";
+let stockCooldown = false;
 
-// Generic stock loader
 async function loadStock(symbol, priceId, changeId) {
+  if (stockCooldown) return;
+
   try {
-    const response = await fetch(
+    const res = await fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${STOCK_API_KEY}`
     );
 
-    const data = await response.json();
-    const quote = data["Global Quote"];
+    const data = await res.json();
 
+    // 🚫 Rate limit or API notice
+    if (data.Note || data.Information) {
+      document.getElementById(priceId).textContent = "Rate limit reached";
+      document.getElementById(changeId).textContent = "Try again later";
+
+      // prevent hammering API
+      stockCooldown = true;
+      setTimeout(() => (stockCooldown = false), 120000);
+      return;
+    }
+
+    const quote = data["Global Quote"];
     if (!quote || !quote["05. price"]) {
-      document.getElementById(priceId).textContent = "N/A";
+      document.getElementById(priceId).textContent = "Unavailable";
+      document.getElementById(changeId).textContent = "";
       return;
     }
 
@@ -207,22 +221,23 @@ async function loadStock(symbol, priceId, changeId) {
     priceEl.textContent = `$${price}`;
     changeEl.textContent = change;
 
-    changeEl.classList.remove("positive", "negative");
-    changeEl.classList.add(change.startsWith("-") ? "negative" : "positive");
+    changeEl.className = change.startsWith("-")
+      ? "negative"
+      : "positive";
 
-  } catch (err) {
-    document.getElementById(priceId).textContent = "Error";
+  } catch (e) {
+    document.getElementById(priceId).textContent = "Network error";
+    document.getElementById(changeId).textContent = "";
   }
 }
 
-// Load stocks on page load
 document.addEventListener("DOMContentLoaded", () => {
   loadStock("AAPL", "aapl-price", "aapl-change");
   loadStock("TSLA", "tsla-price", "tsla-change");
 
-  // Auto refresh every 60 seconds
+  // refresh every 2 minutes (SAFE)
   setInterval(() => {
     loadStock("AAPL", "aapl-price", "aapl-change");
     loadStock("TSLA", "tsla-price", "tsla-change");
-  }, 60000);
+  }, 120000);
 });
