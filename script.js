@@ -179,3 +179,58 @@ affiliateForm.addEventListener('submit', function(e) {
   });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     COOKIE NOTICE
+  ========================= */
+  const cookieBanner = document.getElementById("cookie-banner");
+  const cookieAccept = document.getElementById("cookie-accept");
+
+  if (cookieBanner && !localStorage.getItem("zynxCookiesAccepted")) {
+    cookieBanner.style.display = "flex";
+  }
+
+  if (cookieAccept) {
+    cookieAccept.addEventListener("click", () => {
+      localStorage.setItem("zynxCookiesAccepted", "true");
+      cookieBanner.style.display = "none";
+    });
+  }
+
+  /* =========================
+     FORM SUCCESS (Formspree)
+  ========================= */
+  const forms = document.querySelectorAll("form");
+
+  forms.forEach(form => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const action = form.getAttribute("action");
+
+      try {
+        const response = await fetch(action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          form.style.display = "none";
+
+          const success = form.parentElement.querySelector(
+            ".success-message, #affiliate-success"
+          );
+
+          if (success) success.style.display = "block";
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  });
+
+});
