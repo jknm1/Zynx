@@ -38,6 +38,39 @@ results) -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 </head>
+  <div id="cookie-banner" style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#111;
+  color:#fff;
+  padding:12px;
+  text-align:center;
+  font-size:14px;
+  z-index:9999;
+  display:none;
+">
+  This site uses cookies for analytics and functionality.
+  <button id="cookie-accept" style="
+    margin-left:10px;
+    padding:6px 12px;
+    cursor:pointer;
+  ">
+    OK
+  </button>
+</div>
+
+<script>
+  if (!localStorage.getItem("zynxCookiesAccepted")) {
+    document.getElementById("cookie-banner").style.display = "block";
+  }
+
+  document.getElementById("cookie-accept").onclick = function () {
+    localStorage.setItem("zynxCookiesAccepted", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+  };
+</script>
 <body>
 
   <!-- Small circular logo (updated to relative path) -->
@@ -286,6 +319,11 @@ results) -->
         >
         Follow us on Instagram @zynx.corporation
       </a>
+      <div class="footer-legal">
+  <a href="/privacy.html">Privacy Policy</a>
+  <span>•</span>
+  <a href="/terms.html">Terms of Service</a>
+</div>
     </div>
   </footer>
 <!-- Live Support Widget -->
