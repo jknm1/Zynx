@@ -290,5 +290,7 @@ if (affiliateDashboard) {
   if (params.get("approved") === "true") {
     affiliateDashboard.style.display = "block";
     affiliateDashboard.scrollIntoView({ behavior: "smooth" });
-  }
+  again.");
+    });
+  });
 }
