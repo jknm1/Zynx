@@ -1,161 +1,189 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   // ===== Fade-in on scroll =====
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
-  );
-  fadeElements.forEach(el => observer.observe(el));
+  const fadeElements = document.querySelectorAll(".fade-in");
+  if (fadeElements.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+    );
+    fadeElements.forEach((el) => observer.observe(el));
+  }
 
   // ===== Smooth scrolling for anchor links =====
   const offset = 100;
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", e => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute("href"));
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      const target = href ? document.querySelector(href) : null;
+
+      // only prevent default if it’s a real in-page target
       if (target) {
-        const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        e.preventDefault();
+        const topPos =
+          target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: topPos, behavior: "smooth" });
       }
+
       const navToggle = document.getElementById("nav-toggle");
       if (navToggle) navToggle.checked = false;
     });
   });
 
   // ===== Close nav on outside click =====
-  document.addEventListener("click", e => {
+  document.addEventListener("click", (e) => {
     const navContainer = document.querySelector(".floating-nav");
     const navToggle = document.getElementById("nav-toggle");
-    if (navToggle && navToggle.checked && !navContainer.contains(e.target)) {
+    if (navToggle && navToggle.checked && navContainer && !navContainer.contains(e.target)) {
       navToggle.checked = false;
     }
   });
 
   // ===== Dark mode toggle =====
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
-    if (localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark');
-      themeToggle.textContent = '☀️';
+    if (localStorage.getItem("darkMode") === "enabled") {
+      document.body.classList.add("dark");
+      themeToggle.textContent = "☀️";
     }
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      if (document.body.classList.contains('dark')) {
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('darkMode', 'disabled');
-      }
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const enabled = document.body.classList.contains("dark");
+      themeToggle.textContent = enabled ? "☀️" : "🌙";
+      localStorage.setItem("darkMode", enabled ? "enabled" : "disabled");
     });
   }
 
-  // ===== Waitlist form success =====
-  const waitlistForm = document.querySelector('.waitlist-form');
-  const successMsg = document.querySelector('.success-message');
-  if (waitlistForm && successMsg) {
-    waitlistForm.addEventListener('submit', e => {
+  // ===== Cookie notice =====
+  const cookieBanner = document.getElementById("cookie-banner");
+  const cookieAccept = document.getElementById("cookie-accept");
+  if (cookieBanner && !localStorage.getItem("zynxCookiesAccepted")) {
+    cookieBanner.style.display = "flex";
+  }
+  if (cookieAccept && cookieBanner) {
+    cookieAccept.addEventListener("click", () => {
+      localStorage.setItem("zynxCookiesAccepted", "true");
+      cookieBanner.style.display = "none";
+    });
+  }
+
+  // ===== Waitlist + Affiliate + Footer forms (Formspree) =====
+  // This handles ALL Formspree forms safely, and shows the right success message.
+  document.querySelectorAll("form[action*='formspree.io']").forEach((form) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      successMsg.style.display = 'block';
-      waitlistForm.style.display = 'none';
-      if (typeof gtag === 'function') {
-        gtag('event', 'waitlist_signup', {
-          'event_category': 'Form',
-          'event_label': 'Waitlist Submission'
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
         });
+
+        if (response.ok) {
+          // analytics only for main waitlist form
+          if (form.classList.contains("waitlist-form") && typeof gtag === "function") {
+            gtag("event", "waitlist_signup", {
+              event_category: "Form",
+              event_label: "Waitlist Submission",
+            });
+          }
+
+          form.reset();
+          form.style.display = "none";
+
+          // Find a nearby success message:
+          // - for the main waitlist card: .success-message
+          // - for affiliate form section: #affiliate-success
+          const parent = form.parentElement;
+          const success =
+            parent?.querySelector(".success-message") ||
+            parent?.querySelector("#affiliate-success") ||
+            document.querySelector("#affiliate-success");
+
+          if (success) {
+            success.style.display = "block";
+
+            // Auto-hide after 5s (optional; remove if you don’t want it)
+            setTimeout(() => {
+              success.style.opacity = "0";
+              success.style.transition = "opacity 0.5s ease";
+              setTimeout(() => {
+                success.style.display = "none";
+                success.style.opacity = "1";
+                form.style.display = "block";
+              }, 500);
+            }, 5000);
+          }
+        } else {
+          alert("Submission failed. Try again.");
+        }
+      } catch (error) {
+        console.error("Error!", error);
+        alert("Network error. Try again.");
       }
     });
-  }
-
-// AJAX submission for Affiliate Form
-const affiliateForm = document.querySelector('#affiliate-form form');
-
-affiliateForm.addEventListener('submit', function(e) {
-  e.preventDefault(); // Stop page reload
-
-  const formData = new FormData(affiliateForm);
-
-  fetch(affiliateForm.action, {
-    method: affiliateForm.method,
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(response => {
-    if (response.ok) {
-      // Hide the form
-      affiliateForm.style.display = 'none';
-
-      // Show the success message
-      const successMessage = document.querySelector('#affiliate-success');
-      if (successMessage) {
-        successMessage.style.display = 'block';
-      }
-    } else {
-      response.json().then(data => {
-        alert(data.error || 'Submission failed. Try again.');
-      });
-    }
-  })
-  .catch(error => {
-    console.error('Error!', error);
-    alert('Network error. Try again.');
   });
-});
 
   // ===== Scroll-to-top buttons =====
-  document.querySelectorAll('.scroll-to-top').forEach(btn => {
-    btn.addEventListener('click', e => {
+  document.querySelectorAll(".scroll-to-top").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
 
   // ===== Live Support Widget =====
-  const supportWidget = document.getElementById('live-support');
-  const supportOpen = document.getElementById('support-open');
-  const supportClose = document.getElementById('support-close');
-  const supportSend = document.getElementById('support-send');
-  const supportInput = document.getElementById('support-input');
-  const supportHuman = document.getElementById('support-human');
-  const supportMessages = document.getElementById('support-messages');
+  const supportWidget = document.getElementById("live-support");
+  const supportOpen = document.getElementById("support-open");
+  const supportClose = document.getElementById("support-close");
+  const supportSend = document.getElementById("support-send");
+  const supportInput = document.getElementById("support-input");
+  const supportHuman = document.getElementById("support-human");
+  const supportMessages = document.getElementById("support-messages");
 
-  function appendMessage(msg, sender='bot') {
-    const div = document.createElement('div');
-    div.classList.add(sender === 'bot' ? 'bot-message' : 'user-message');
+  function appendMessage(msg, sender = "bot") {
+    if (!supportMessages) return;
+    const div = document.createElement("div");
+    div.classList.add(sender === "bot" ? "bot-message" : "user-message");
     div.textContent = msg;
     supportMessages.appendChild(div);
     supportMessages.scrollTop = supportMessages.scrollHeight;
   }
 
   if (supportOpen && supportWidget) {
-    supportOpen.addEventListener('click', () => {
-      supportWidget.style.display = 'flex';
-      supportOpen.style.display = 'none';
+    supportOpen.addEventListener("click", () => {
+      supportWidget.style.display = "flex";
+      supportOpen.style.display = "none";
     });
   }
 
-  if (supportClose && supportWidget) {
-    supportClose.addEventListener('click', () => {
-      supportWidget.style.display = 'none';
-      supportOpen.style.display = 'block';
+  if (supportClose && supportWidget && supportOpen) {
+    supportClose.addEventListener("click", () => {
+      supportWidget.style.display = "none";
+      supportOpen.style.display = "block";
     });
   }
 
   if (supportSend && supportInput) {
-    supportSend.addEventListener('click', () => {
+    supportSend.addEventListener("click", () => {
       const msg = supportInput.value.trim();
       if (!msg) return;
-      appendMessage(msg, 'user');
-      supportInput.value = '';
-      setTimeout(() => appendMessage('Thanks for your message. A human agent will respond shortly.'), 600);
+      appendMessage(msg, "user");
+      supportInput.value = "";
+      setTimeout(
+        () => appendMessage("Thanks for your message. A human agent will respond shortly."),
+        600
+      );
     });
-    supportInput.addEventListener('keypress', e => {
-      if (e.key === 'Enter') {
+
+    supportInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
         e.preventDefault();
         supportSend.click();
       }
@@ -163,87 +191,18 @@ affiliateForm.addEventListener('submit', function(e) {
   }
 
   if (supportHuman) {
-    supportHuman.addEventListener('click', () => {
-      appendMessage('Connecting you to a human support agent...', 'bot');
-      window.open('mailto:hello@zynxcorp.com?subject=Live%20Support%20Request', '_blank');
+    supportHuman.addEventListener("click", () => {
+      appendMessage("Connecting you to a human support agent...", "bot");
+      window.open("mailto:hello@zynxcorp.com?subject=Live%20Support%20Request", "_blank");
     });
   }
 
   // ===== FAQ Toggle =====
-  const faqItems = document.querySelectorAll('.faq-item h3');
-  faqItems.forEach(header => {
-    header.addEventListener('click', () => {
+  document.querySelectorAll(".faq-item h3").forEach((header) => {
+    header.addEventListener("click", () => {
       const content = header.nextElementSibling;
-      if (content) content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      if (!content) return;
+      content.style.display = content.style.display === "block" ? "none" : "block";
     });
-  });
-
-});
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =========================
-     COOKIE NOTICE
-  ========================= */
-  const cookieBanner = document.getElementById("cookie-banner");
-  const cookieAccept = document.getElementById("cookie-accept");
-
-  if (cookieBanner && !localStorage.getItem("zynxCookiesAccepted")) {
-    cookieBanner.style.display = "flex";
-  }
-
-  if (cookieAccept) {
-    cookieAccept.addEventListener("click", () => {
-      localStorage.setItem("zynxCookiesAccepted", "true");
-      cookieBanner.style.display = "none";
-    });
-  }
-
-  /* =========================
-   FORM SUCCESS (Formspree)
-========================= */
-const forms = document.querySelectorAll("form");
-
-forms.forEach(form => {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    const action = form.getAttribute("action");
-
-    try {
-      const response = await fetch(action, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-
-      if (response.ok) {
-        form.reset();
-        form.style.display = "none";
-
-        const success = form.parentElement.querySelector(
-          ".success-message, #affiliate-success"
-        );
-
-        if (success) {
-          success.style.display = "block";
-
-          // ⏱️ AUTO HIDE AFTER 5 SECONDS
-          setTimeout(() => {
-            success.style.opacity = "0";
-            success.style.transition = "opacity 0.5s ease";
-
-            setTimeout(() => {
-              success.style.display = "none";
-              success.style.opacity = "1";
-              form.style.display = "block";
-            }, 500);
-
-          }, 5000);
-        }
-      }
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
-    }
   });
 });
