@@ -199,38 +199,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     FORM SUCCESS (Formspree)
-  ========================= */
-  const forms = document.querySelectorAll("form");
+   FORM SUCCESS (Formspree)
+========================= */
+const forms = document.querySelectorAll("form");
 
-  forms.forEach(form => {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+forms.forEach(form => {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(form);
-      const action = form.getAttribute("action");
+    const formData = new FormData(form);
+    const action = form.getAttribute("action");
 
-      try {
-        const response = await fetch(action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
 
-        if (response.ok) {
-          form.reset();
-          form.style.display = "none";
+      if (response.ok) {
+        form.reset();
+        form.style.display = "none";
 
-          const success = form.parentElement.querySelector(
-            ".success-message, #affiliate-success"
-          );
+        const success = form.parentElement.querySelector(
+          ".success-message, #affiliate-success"
+        );
 
-          if (success) success.style.display = "block";
+        if (success) {
+          success.style.display = "block";
+
+          // ⏱️ AUTO HIDE AFTER 5 SECONDS
+          setTimeout(() => {
+            success.style.opacity = "0";
+            success.style.transition = "opacity 0.5s ease";
+
+            setTimeout(() => {
+              success.style.display = "none";
+              success.style.opacity = "1";
+              form.style.display = "block";
+            }, 500);
+
+          }, 5000);
         }
-      } catch (error) {
-        alert("Something went wrong. Please try again.");
       }
-    });
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    }
   });
-
 });
