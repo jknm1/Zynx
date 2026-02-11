@@ -1,11 +1,4 @@
-/* ===================================
-   ZYNX CORPORATION - PROFESSIONAL CSS
-=================================== */
-
-/* ===== Smooth Scroll ===== */
-html {
-  scroll-behavior: smooth;
-}
+/* style.css - Zynx Corporation */
 
 /* ===== General Reset ===== */
 * {
@@ -16,22 +9,17 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f7f9fc);
+  background-color: #fdfdfd;
   color: #111;
   line-height: 1.6;
-  letter-spacing: -0.3px;
   overflow-x: hidden;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* ===== Dark Mode ===== */
 body.dark {
-  background: #121212;
+  background-color: #121212;
   color: #e0e0e0;
-}
-
-section {
-  padding: 4rem 0;
 }
 
 a {
@@ -39,22 +27,17 @@ a {
   color: inherit;
 }
 
-p {
-  max-width: 650px;
-}
-
-/* ===== Container ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* ===== Logo ===== */
+/* ===== Logo Corner ===== */
 .logo-corner {
   position: fixed;
-  top: 15px;
-  left: 15px;
+  top: 10px;
+  left: 10px;
   z-index: 999;
 }
 
@@ -69,40 +52,148 @@ p {
 /* ===== Theme Toggle ===== */
 .theme-btn {
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   background: #eee;
   border: none;
-  padding: 0.6rem 0.8rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 50%;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   z-index: 999;
 }
 
 body.dark .theme-btn {
   background: #222;
+  color: #fdfdfd;
+}
+
+/* ===== Floating Navigation ===== */
+.floating-nav {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: #444;
+}
+
+.nav-icon,
+.nav-icon::before,
+.nav-icon::after {
+  display: block;
+  background: #fff;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-icon::before {
+  top: -8px;
+}
+
+.nav-icon::after {
+  top: 8px;
+}
+
+.nav-toggle:checked + .nav-btn .nav-icon {
+  background: transparent;
+}
+
+.nav-toggle:checked + .nav-btn .nav-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle:checked + .nav-btn .nav-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.nav-menu {
+  list-style: none;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.nav-toggle:checked ~ .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+  transform: translateY(20px);
+  transition: transform 0.3s ease-out;
+}
+
+.nav-toggle:checked ~ .nav-menu .nav-item {
+  transform: translateY(0);
+}
+
+.nav-link {
+  background: #111;
   color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: background 0.3s;
+}
+
+.nav-link:hover {
+  background: #444;
 }
 
 /* ===== Header ===== */
 header {
   text-align: center;
-  padding-top: 120px;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 header h1 {
   font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -1px;
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  opacity: 0.8;
 }
 
 .status {
@@ -110,101 +201,36 @@ header h1 {
   color: #666;
 }
 
-/* ===== Buttons ===== */
-.btn {
-  display: inline-block;
-  background: #111;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
-
-.btn:hover {
-  background: #000;
-  transform: translateY(-2px);
-}
-
-.btn.large {
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
-
-.btn.btn-disabled {
-  background: #aaa;
-  cursor: not-allowed;
-}
-
-/* ===== Cards ===== */
-.card {
-  background: #f5f5f5;
-  padding: 1.5rem;
-  border-radius: 15px;
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-body.dark .card {
-  background: #1c1c1c;
-  box-shadow: 0 10px 30px rgba(255,255,255,0.05);
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-
-/* ===== Platforms Grid ===== */
-.platforms .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-/* ===== Badges ===== */
-.badge-live {
-  display: inline-block;
-  background: #4caf50;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-.badge-dev {
-  display: inline-block;
-  background: #ff9800;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-/* ===== Waitlist ===== */
+/* ===== Waitlist Card ===== */
 .waitlist-card {
   background: #f5f5f5;
   padding: 2rem;
   border-radius: 15px;
+  margin-top: 2rem;
   max-width: 500px;
-  margin: 2rem auto 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 
 body.dark .waitlist-card {
   background: #1c1c1c;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.05);
 }
 
 .waitlist-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.waitlist-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.waitlist-section p {
+  margin-bottom: 1rem;
 }
 
 .waitlist-form input {
@@ -217,19 +243,192 @@ body.dark .waitlist-card {
 
 .waitlist-form button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   border: none;
   background: #111;
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
+.waitlist-form button:hover {
+  background: #333;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+/* Social proof */
+.social-proof {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: pulse 1.2s infinite;
+  margin-right: 5px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.7); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.7); opacity: 0.6; }
+}
+
+/* ===== Platforms Section ===== */
+.platforms .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+body.dark .card {
+  background: #1c1c1c;
+  box-shadow: 0 5px 20px rgba(255,255,255,0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-live {
+  display: inline-block;
+  background: #4caf50;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-dev {
+  display: inline-block;
+  background: #ff9800;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+.btn.large {
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.btn.btn-disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+/* ===== Donation / Affiliate Sections ===== */
+.donate, .affiliate {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+body.dark .donate, body.dark .affiliate {
+  background: #1c1c1c;
+}
+/* ===== Affiliate Form ===== */
+.affiliate .lead {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.affiliate-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.affiliate-form input,
+.affiliate-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+body.dark .affiliate-form input,
+body.dark .affiliate-form textarea {
+  background: #111;
+  color: #fff;
+  border-color: #333;
+}
+
+.affiliate-check {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.affiliate-success {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #4caf50;
+  text-align: center;
+}
 /* ===== Testimonials ===== */
+.testimonials {
+  margin-top: 3rem;
+}
+
 .quote-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  margin-top: 1rem;
 }
 
 .quote {
@@ -237,17 +436,203 @@ body.dark .waitlist-card {
   padding: 1rem;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 body.dark .quote {
   background: #1c1c1c;
+  box-shadow: 0 5px 15px rgba(255,255,255,0.05);
 }
 
+/* Small circular avatar */
+.quote::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Specific avatars for each quote */
+.quote:nth-child(1)::before {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
+}
+
+.quote:nth-child(2)::before {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/99/User_icon_BLACK-02.png');
+}
+
+.quote p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote cite {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* ===== Roadmap ===== */
+.roadmap {
+  margin-top: 3rem;
+}
+
+.timeline {
+  border-left: 3px solid #111;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.milestone {
+  margin-bottom: 1rem;
+}
+
+/* ===== CTA ===== */
+.cta {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.about-card {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  background: #f5f5f5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+body.dark .about-card {
+  background: #1c1c1c;
+}
+
+/* About section */
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about .lead {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.about .values {
+  margin-top: 1rem;
+  list-style: disc inside;
+}
+
+.about-cta {
+  margin-top: 1.5rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
+.footer-signup {
+  margin-top: 1rem;
+}
+
+.footer-signup input {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.footer-signup button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===== Fade-In Animation ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Scroll-To-Top Button ===== */
+.scroll-to-top {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #111;             /* Dark button color */
+  color: #fff;                  /* Text color */
+  padding: 0.75rem 1.5rem;      /* Bigger padding for a proper button feel */
+  border-radius: 25px;          /* Rounded pill shape */
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.scroll-to-top:hover {
+  background: #333;             /* Slightly lighter on hover */
+  transform: translateY(-3px);  /* Lift effect */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== Media Queries ===== */
+@media (max-width: 768px) {
+  .floating-nav {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .platforms .grid,
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Footer Instagram Logo Fix */
+.footer-links .ig-logo {
+  width: 24px;        /* Make it small */
+  height: 24px;       /* Square to keep aspect ratio */
+  object-fit: cover;  /* Keep it proportional */
+  border-radius: 50%; /* Circle shape */
+  vertical-align: middle;
+  margin-right: 0.5rem; /* Space between icon and text */
+}
 /* ===== FAQ ===== */
+.faq {
+  margin-top: 3rem;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+}
+
 .faq-item h3 {
   cursor: pointer;
   background: #eee;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
 }
 
@@ -256,8 +641,33 @@ body.dark .faq-item h3 {
 }
 
 .faq-item p {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   display: none;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
+/* ===== Fade-In ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== Live Support Widget ===== */
@@ -265,6 +675,7 @@ body.dark .faq-item h3 {
   position: fixed;
   bottom: 100px;
   right: 30px;
+  z-index: 9999;
   background: #111;
   color: #fff;
   border: none;
@@ -272,6 +683,7 @@ body.dark .faq-item h3 {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 #live-support {
@@ -286,69 +698,78 @@ body.dark .faq-item h3 {
   display: none;
   flex-direction: column;
   overflow: hidden;
+  z-index: 9999;
 }
 
 body.dark #live-support {
   background: #1c1c1c;
 }
 
-/* ===== Cookie Banner ===== */
-#cookie-banner {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #0b0b0b;
-  color: #fff;
-  padding: 12px 16px;
-  text-align: center;
-  z-index: 9999;
-}
-
-#cookie-banner button {
-  background: #fff;
-  color: #000;
-  border: none;
-  padding: 6px 14px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-/* ===== Footer ===== */
-footer {
-  margin-top: 4rem;
-  padding: 2.5rem 2rem;
+.support-header {
   background: #111;
   color: #fff;
-  text-align: center;
+  padding: 0.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-footer a {
+.support-messages {
+  padding: 0.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.support-messages div {
+  margin-bottom: 0.5rem;
+}
+
+.bot-message {
+  background: #eee;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.user-message {
+  background: #111;
   color: #fff;
-  opacity: 0.8;
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: right;
 }
 
-.footer-legal {
-  margin-top: 1rem;
-  font-size: 13px;
-  opacity: 0.7;
+#support-input {
+  padding: 0.5rem;
+  border: none;
+  width: calc(100% - 100px);
 }
 
-/* ===== Animations ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+#support-send {
+  width: 50px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+#support-human {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0.5rem;
+  border-radius: 8px;
+  width: 90%;
 }
 
-/* ===== Responsive ===== */
+/* ===== Media Queries ===== */
 @media (max-width: 768px) {
+  .floating-nav {
+    bottom: 20px;
+    right: 20px;
+  }
+
   header h1 {
     font-size: 2rem;
   }
@@ -360,6 +781,64 @@ footer a {
 
   #live-support {
     width: 90%;
+    bottom: 120px;
     right: 5%;
   }
+}
+/* =========================
+   COOKIE BANNER
+========================= */
+#cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0b0b0b;
+  color: #fff;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+#cookie-banner button {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* =========================
+   SUCCESS MESSAGES
+========================= */
+.success-message,
+#affiliate-success {
+  background: #0f1f14;
+  border: 1px solid #1d6b3a;
+  color: #bff5d3;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* =========================
+   FOOTER LEGAL LINKS
+========================= */
+.footer-legal {
+  margin-top: 12px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.footer-legal a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-legal a:hover {
+  text-decoration: underline;
 }
