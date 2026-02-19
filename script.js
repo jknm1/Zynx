@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // ===== Fade-in on scroll =====
   const fadeElements = document.querySelectorAll(".fade-in");
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Waitlist + Affiliate + Footer forms (Formspree) =====
-  // This handles ALL Formspree forms safely, and shows the right success message.
   document.querySelectorAll("form[action*='formspree.io']").forEach((form) => {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -87,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (response.ok) {
-          // analytics only for main waitlist form
           if (form.classList.contains("waitlist-form") && typeof gtag === "function") {
             gtag("event", "waitlist_signup", {
               event_category: "Form",
@@ -98,9 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
           form.reset();
           form.style.display = "none";
 
-          // Find a nearby success message:
-          // - for the main waitlist card: .success-message
-          // - for affiliate form section: #affiliate-success
           const parent = form.parentElement;
           const success =
             parent?.querySelector(".success-message") ||
@@ -109,8 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (success) {
             success.style.display = "block";
-
-            // Auto-hide after 5s (optional; remove if you don’t want it)
             setTimeout(() => {
               success.style.opacity = "0";
               success.style.transition = "opacity 0.5s ease";
@@ -205,15 +197,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!content) return;
       content.style.display = content.style.display === "block" ? "none" : "block";
     });
-    // ===== Founder Note Modal =====
-  function openFounderNote(){
+  });
+
+  // ===== Founder Note Modal =====
+  window.openFounderNote = function() {
     const modal = document.getElementById("founderModal");
     if(modal) modal.classList.add("show");
   }
 
-  function closeFounderNote(){
+  window.closeFounderNote = function() {
     const modal = document.getElementById("founderModal");
     if(modal) modal.classList.remove("show");
   }
-  });
+
 });
