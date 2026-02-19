@@ -842,41 +842,77 @@ body.dark #live-support {
 .footer-legal a:hover {
   text-decoration: underline;
 }
-/* Founder Note Modal */
+/* ===== Founder’s Note Button ===== */
+.founder-btn {
+  position: fixed;          /* stays visible on screen */
+  top: 50%;                 /* vertical center */
+  left: 50%;                /* horizontal center */
+  transform: translate(-50%, -50%); /* perfect centering */
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #000;   /* Zynx black style */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;            /* above everything */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.founder-btn:hover {
+  background-color: #111;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* ===== Founder’s Note Modal ===== */
 .founder-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7); /* semi-transparent background */
-  display: none; /* hidden by default */
+  display: none;             /* hidden by default */
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7); /* dark transparent backdrop */
+  z-index: 9999;             /* above everything */
 }
 
 .founder-modal.show {
-  display: flex;
+  display: flex;             /* show when active */
 }
 
 .founder-modal-box {
-  background-color: #fff;
+  background-color: #fff;    /* modal card color */
   color: #000;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 12px;
   max-width: 500px;
   width: 90%;
-  text-align: left;
-  position: relative;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  animation: fadeIn 0.3s ease-out;
 }
 
+/* Close button */
 .founder-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  color: #333;
+  transition: all 0.2s ease;
+}
+
+.founder-close:hover {
+  background: #111;
+}
+
+/* Fade-in animation for modal box */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
