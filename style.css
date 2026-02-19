@@ -842,7 +842,7 @@ body.dark #live-support {
 .footer-legal a:hover {
   text-decoration: underline;
 }
-/* Founder Modal Styles */
+* Founder Modal Styles */
 .founder-modal {
   display: none; /* hidden by default */
   position: fixed;
