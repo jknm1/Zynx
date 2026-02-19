@@ -205,5 +205,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!content) return;
       content.style.display = content.style.display === "block" ? "none" : "block";
     });
+    // ===== Founder Note Modal =====
+  function openFounderNote(){
+    const modal = document.getElementById("founderModal");
+    if(modal) modal.classList.add("show");
+  }
+
+  function closeFounderNote(){
+    const modal = document.getElementById("founderModal");
+    if(modal) modal.classList.remove("show");
+  }
+
+}); 
   });
 });
