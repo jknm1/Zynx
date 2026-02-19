@@ -212,5 +212,5 @@ function closeFounderNote() {
 // Optional: close modal when clicking outside the box
 document.getElementById("founderModal").addEventListener("click", function(e) {
   if (e.target === this) closeFounderNote();
-});
+ });
 });
