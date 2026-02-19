@@ -199,15 +199,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== Founder Note Modal =====
-  window.openFounderNote = function() {
-    const modal = document.getElementById("founderModal");
-    if(modal) modal.classList.add("show");
-  }
+ function openFounderNote() {
+  const modal = document.getElementById("founderModal");
+  if (modal) modal.classList.add("show");
+}
 
-  window.closeFounderNote = function() {
-    const modal = document.getElementById("founderModal");
-    if(modal) modal.classList.remove("show");
-  }
+function closeFounderNote() {
+  const modal = document.getElementById("founderModal");
+  if (modal) modal.classList.remove("show");
+}
 
+// Optional: close modal when clicking outside the box
+document.getElementById("founderModal").addEventListener("click", function(e) {
+  if (e.target === this) closeFounderNote();
 });
+
