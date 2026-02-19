@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const href = anchor.getAttribute("href");
       const target = href ? document.querySelector(href) : null;
 
-      // only prevent default if it’s a real in-page target
       if (target) {
         e.preventDefault();
         const topPos =
@@ -199,18 +198,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
- function openFounderNote() {
-  const modal = document.getElementById("founderModal");
-  if (modal) modal.classList.add("show");
-}
+  // ===== Founder Note Modal =====
+  const founderModal = document.getElementById("founderModal");
+  const founderBtn = document.querySelector(".founder-btn");
+  const founderClose = document.querySelector(".founder-close");
 
-function closeFounderNote() {
-  const modal = document.getElementById("founderModal");
-  if (modal) modal.classList.remove("show");
-}
+  if (founderBtn && founderModal) {
+    founderBtn.addEventListener("click", () => {
+      founderModal.classList.add("show");
+    });
+  }
 
-// Optional: close modal when clicking outside the box
-document.getElementById("founderModal").addEventListener("click", function(e) {
-  if (e.target === this) closeFounderNote();
- });
+  if (founderClose && founderModal) {
+    founderClose.addEventListener("click", () => {
+      founderModal.classList.remove("show");
+    });
+  }
+
+  // Close modal when clicking outside the modal box
+  if (founderModal) {
+    founderModal.addEventListener("click", (e) => {
+      if (e.target === founderModal) {
+        founderModal.classList.remove("show");
+      }
+    });
+  }
 });
