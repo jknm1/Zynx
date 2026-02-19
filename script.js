@@ -215,7 +215,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("founderModal");
     if(modal) modal.classList.remove("show");
   }
-
-}); 
   });
 });
