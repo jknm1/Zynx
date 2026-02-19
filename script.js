@@ -213,4 +213,4 @@ function closeFounderNote() {
 document.getElementById("founderModal").addEventListener("click", function(e) {
   if (e.target === this) closeFounderNote();
 });
-
+});
